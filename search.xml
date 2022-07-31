@@ -4,7 +4,70 @@
   
     
     <entry>
-      <title>点击高亮</title>
+      <title>虚拟 DOM 和 diff 算法</title>
+      <link href="/2022/07/27/virtualDOM/"/>
+      <url>/2022/07/27/virtualDOM/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>摘要： 介绍snabbdom、虚拟DOM、diff算法</p></blockquote><p>本文重点是什么？</p><ol><li>虚拟 DOM 是什么？</li><li>虚拟 DOM 如何产生？—— h 函数</li><li>diff 算法原理？—— diff 函数</li><li>虚拟 DOM 如何通过 diff 变为真正的 DOM 的？ —— diff 函数</li></ol><h2 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h2><h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><ul><li>介绍：是一个 JavaScript 对象，用来描述真实的DOM结构。</li><li>如下图，有三个属性:<br> （1）sel：标签名；（2）data：属性信息；（3）children：子元素对象。</li></ul><p>真实 DOM</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>我是一个标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>牛奶<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>咖啡<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>可乐<span class="tag">&lt;/ <span class="attr">li</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><p>虚拟 DOM</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"seL"</span>: <span class="string">"div"</span>，</span><br><span class="line">    <span class="string">"data"</span>: &#123; <span class="string">"class"</span>: &#123; <span class="string">"box"</span>: <span class="literal">true</span> &#125; &#125;,</span><br><span class="line">    <span class="string">"children"</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"seL"</span>: <span class="string">"h3"</span>，</span><br><span class="line">            <span class="string">"data"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"我是一个标题"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"seL"</span>: <span class="string">"ul"</span>,</span><br><span class="line">            <span class="string">"data"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"children"</span>: [</span><br><span class="line">               &#123; </span><br><span class="line">                    <span class="string">"sel"</span>: <span class="string">"li"</span></span><br><span class="line">                    <span class="string">"data"</span>: &#123;&#125;,</span><br><span class="line">                    <span class="string">"text"</span>: &#123; <span class="string">"牛奶"</span> &#125;</span><br><span class="line">                &#125;，</span><br><span class="line">                &#123; </span><br><span class="line">                    <span class="string">"sel "</span>: <span class="string">"li"</span></span><br><span class="line">                    <span class="string">"data"</span>: &#123;&#125;,</span><br><span class="line">                    <span class="string">"text"</span>: &#123; <span class="string">"咖啡"</span> &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">               &#123; </span><br><span class="line">                <span class="string">"seL"</span>: <span class="string">"li"</span></span><br><span class="line">                <span class="string">"data"</span>: &#123;&#125;,</span><br><span class="line">                <span class="string">"text"</span> : &#123;<span class="string">"可乐”&#125;</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">            ]</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">   ]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><p><code>区别于真实DOM</code></p><ul><li>无需手动操作 DOM，提高开发效率；</li><li>复杂场景下，防止频繁触发重绘，可以提高性能；</li><li>虚拟 DOM 实际是 JavaScript 对象，可以进行跨平台操作。</li></ul><p><code>问题</code>：数据发生改变，试图怎么更新 ?<br>当数据改变时，会触发setter，并且通过Dep.notify去通知所有订阅者Watcher(组件)，订阅者们就会调用patch方法，给真实DOM打补丁，更新相应的视图。</p><h2 id="diff-函数"><a href="#diff-函数" class="headerlink" title="diff 函数"></a>diff 函数</h2><h3 id="简介：-1"><a href="#简介：-1" class="headerlink" title="简介："></a>简介：</h3><p>计算最小更新 DOM 的方式。</p><ul><li>将 DOM 抽象为虚拟 DOM ；</li><li>然后通过新旧虚拟 DOM 这两个对象的差异( Diff 算法)；</li><li>最终只把变化的部分重新渲染,提高渲染效率的过程。</li></ul><p>流程图：<br>其中包含 <code>patch</code> 函数、<code>pachVnode</code> 函数、<code>UpdateVnode</code> 函数（未详细介绍）<br><img src="https://img-blog.csdnimg.cn/3711cc3f05ca40bb97799a116ff04596.jpeg" alt="请添加图片描述"></p><h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><p>使用 snabbdom 虚拟 DOM 库 ：<a href="https://github.com/snabbdom/snabbdom" target="_blank" rel="noopener">snabbdom</a></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** src/index.js */</span></span><br><span class="line"><span class="keyword">import</span> &#123; init &#125; <span class="keyword">from</span> <span class="string">'snabbdom/init'</span></span><br><span class="line"><span class="keyword">import</span> &#123; classModule &#125; <span class="keyword">from</span> <span class="string">'snabbdom/modules/class'</span></span><br><span class="line"><span class="keyword">import</span> &#123; propsModule &#125; <span class="keyword">from</span> <span class="string">'snabbdom/modules/props'</span></span><br><span class="line"><span class="keyword">import</span> &#123; styleModule &#125; <span class="keyword">from</span> <span class="string">'snabbdom/modules/style'</span></span><br><span class="line"><span class="keyword">import</span> &#123; eventListenersModule &#125; <span class="keyword">from</span> <span class="string">'snabbdom/modules/eventlisteners'</span></span><br><span class="line"><span class="keyword">import</span> &#123; h &#125; <span class="keyword">from</span> <span class="string">'snabbdom/h'</span> <span class="comment">// helper function for creating vnodes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1、创建出 patch 函数</span></span><br><span class="line"><span class="keyword">const</span> patch = init([</span><br><span class="line">  classModule,</span><br><span class="line">  propsModule,</span><br><span class="line">  styleModule,</span><br><span class="line">  eventListenersModule</span><br><span class="line">])</span><br><span class="line"><span class="comment">// 2、使用 h 函数创建虚拟节点</span></span><br><span class="line"><span class="keyword">const</span> vnode1 = h(<span class="string">'ul'</span>, &#123;&#125;, [</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'A'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'B'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'C'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'D'</span>)</span><br><span class="line">])</span><br><span class="line"><span class="comment">// 3.创建空的容器</span></span><br><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>)</span><br><span class="line"><span class="comment">// 4.将 DOM 塞入container</span></span><br><span class="line">patch(container, vnode1)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> vnode2 = h(<span class="string">'ul'</span>, &#123;&#125;, [</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'A'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'B'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'C'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'D'</span>),</span><br><span class="line">  h(<span class="string">'li'</span>, &#123;&#125;, <span class="string">'E'</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点击按钮时，将vnode1变为vnode2</span></span><br><span class="line"><span class="keyword">const</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>)</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 使用最小改变 来达到 新的vnode 覆盖 旧的 vnode2</span></span><br><span class="line">  patch(vnode1, vnode2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="patch-函数"><a href="#patch-函数" class="headerlink" title="patch 函数"></a>patch 函数</h3><p>接收参数存在： element（真实 DOM ） 和 vnode（虚拟 DOM ） 两种类型<br><code>首次插入</code>：判断 key 和 sel 是相同（2种情况）</p><table><thead><tr><th></th><th>1、vnode.key 和 vnode.sel 都相同</th><th>2、vnode.key 或 vnode.sel 不同</th></tr></thead><tbody><tr><td>是否同一个Vnode</td><td>是</td><td>否</td></tr><tr><td>结果</td><td>更新(调用 <code>pachVnode</code> )</td><td>创建新的DOM，删除老的DOM</td></tr></tbody></table><h3 id="pachVnode-函数"><a href="#pachVnode-函数" class="headerlink" title="pachVnode 函数"></a>pachVnode 函数</h3><p><strong>虚拟节点 text 和 children 最多只能有一个</strong></p><ol><li>保存（旧的相关联）的 DOM 元素 eml 给新的 Vnode（eml 记录新的 Vnode 插入位置）</li><li>比较新、旧 vnode 的 children 情况（3种情况）</li></ol><table><thead><tr><th align="left"></th><th align="left">1、新 vnode === 旧 vnode（全等）</th><th align="left">2、新 Vnode 无 text</th><th align="left">3、新 Vnode 有 text</th></tr></thead><tbody><tr><td align="left">结果</td><td align="left">不需更新，return</td><td align="left">1.新、老 Vnode 都有 children，即调用（<code>updateChildren</code>）；<br>2.老 Vnode 无 children，即添加 children ；<br>3.新的无 children ，即删除 children</td><td align="left">删除 children ，更新新的 text</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 介绍snabbdom、虚拟DOM、diff算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>理解Promise、Resolve、Reject、Async、Await</title>
+      <link href="/2022/07/20/Promise,%20Async,%20Await/"/>
+      <url>/2022/07/20/Promise,%20Async,%20Await/</url>
+      
+        <content type="html"><![CDATA[<p><code>摘要</code>：将异步改写为同步</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaScript笔试题集</title>
+      <link href="/2022/07/16/%E7%AC%94%E8%AF%95%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+      <url>/2022/07/16/%E7%AC%94%E8%AF%95%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="单选题"><a href="#单选题" class="headerlink" title="单选题"></a>单选题</h1><h2 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h2><h3 id="js概念与类型检测"><a href="#js概念与类型检测" class="headerlink" title="js概念与类型检测"></a>js概念与类型检测</h3><ol><li><p>以下不属于 typeof 运算符返回值的是？</p><p>A. “string”<br>B. “function”<br>C. “object”<br>D. “null”</p><blockquote><p>typeof 引用类型只能识别 function</p></blockquote></li><li><p>​</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> C语言 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue手写点击高亮</title>
       <link href="/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/"/>
       <url>/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/</url>
       
@@ -23,7 +86,7 @@
     
     
     <entry>
-      <title>路由元信息控制用户访问权限</title>
+      <title>添加meta控制用户访问权限</title>
       <link href="/2022/05/07/%E8%B7%AF%E7%94%B1%E6%9D%83%E9%99%90/"/>
       <url>/2022/05/07/%E8%B7%AF%E7%94%B1%E6%9D%83%E9%99%90/</url>
       
@@ -42,7 +105,45 @@
     
     
     <entry>
-      <title>数据处理基本操作</title>
+      <title>请求的状态码那些事</title>
+      <link href="/2022/04/10/ajax_readyState/"/>
+      <url>/2022/04/10/ajax_readyState/</url>
+      
+        <content type="html"><![CDATA[<h1 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0（未初始化）: 请求未初始化，还没有调用send()方法</span><br><span class="line">1（载入）: 服务器连接已建立，已调用send()方法，正在发送请求</span><br><span class="line">2（载入完成）: 请求已接收 接收到了响应头，send()方法执行完成，已经接收到全部响应内容</span><br><span class="line">3（交互）: 请求处理中 正在下载响应体</span><br><span class="line">4（完成）: 请求已完成，且响应已就绪</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ajax </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Javascript面试</title>
+      <link href="/2022/03/16/page/"/>
+      <url>/2022/03/16/page/</url>
+      
+        <content type="html"><![CDATA[<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="1-原始类型、引用类新型有哪些？"><a href="#1-原始类型、引用类新型有哪些？" class="headerlink" title="1. 原始类型、引用类新型有哪些？"></a>1. 原始类型、引用类新型有哪些？</h3><p>原始（基本）数据类型有7种：</p><ul><li><input disabled="" type="checkbox"> Number</li><li><input disabled="" type="checkbox"> Boolean</li><li><input disabled="" type="checkbox"> String</li><li><input disabled="" type="checkbox"> null</li><li><input disabled="" type="checkbox"> undefined</li><li><input disabled="" type="checkbox"> Symbol</li><li><input disabled="" type="checkbox"> BigInt</li></ul><p>引用类型3种：</p><ul><li><input disabled="" type="checkbox"> 对象类型 Object :普通对象 Object 、日期对象 Data</li><li><input disabled="" type="checkbox"> 数组类型 Array</li><li><input disabled="" type="checkbox"> 函数类型 Function ：数学函数 Math、其他函数对象 Function</li></ul><h3 id="2-说出以下代码运行结果和原因"><a href="#2-说出以下代码运行结果和原因" class="headerlink" title="2. 说出以下代码运行结果和原因"></a>2. 说出以下代码运行结果和原因</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">       person.age = <span class="number">26</span></span><br><span class="line">       person = &#123;</span><br><span class="line">           name:<span class="string">'hh'</span></span><br><span class="line">           age:<span class="string">'18'</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> person</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> p1 = &#123;</span><br><span class="line">         name:<span class="string">'ff'</span></span><br><span class="line">         age:<span class="string">'20'</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> p2 = test(p1)</span><br><span class="line">   <span class="built_in">console</span>.log(p1) <span class="comment">// --&gt;</span></span><br><span class="line">   <span class="built_in">console</span>.log(p2) <span class="comment">// --&gt;</span></span><br></pre></td></tr></table></figure><p><strong>结果:</strong></p><p>p1：{name: “ff”, age: 26}<br>p2：{name: “hh”, age: 18}</p><p><strong>原因：</strong><br>引用类型作为实参，在函数传参时传递的是内存地址值，p1将地址传递给person，person更改了p1引用地址中的内容，又给其重新分配引用地址，并将地址值传递给p2。</p><h3 id="3-null是对象吗，为什么？"><a href="#3-null是对象吗，为什么？" class="headerlink" title="3. null是对象吗，为什么？"></a>3. null是对象吗，为什么？</h3><p><strong>结论：</strong><br>null不是对象</p><p><strong>原因：</strong><br>虽然typeof 测试null的类型输出为Object，但是这是JS的一个bug，因为JS初创时使用的是32位系统，考虑到性能，JS采用低位存储变量的类型，对象类型的二进制是以000开头的，而null的二进制是全0，则typeof输出Object的错误结果</p><h3 id="4-‘1’-toString-为什么能调用？"><a href="#4-‘1’-toString-为什么能调用？" class="headerlink" title="4. ‘1’.toString()为什么能调用？"></a>4. ‘1’.toString()为什么能调用？</h3><p>虽然toString()是对象方法，但是因为<strong>基本包装类型</strong>的特性，该语句执行其实做了几件事：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// new String（'1'） 可用，ES6不建议使用new关键字创建基本类型的包装类</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Object</span>（<span class="string">'1'</span>） </span><br><span class="line">s.toString ()</span><br><span class="line">s = <span class="literal">null</span></span><br></pre></td></tr></table></figure><p>其中三种基本类型：Boolean,Number,String又是基本包装类型。基本包装类型是将简单数据类型 包装成 复杂数据类型。因此可以调用系统方法。<br>第一步：创建对象实例<br>第二步：调用对象方法<br>第三步：执行完对象方法立即销毁对象</p><h3 id="5-0-1-0-2-0-3-，为什么？"><a href="#5-0-1-0-2-0-3-，为什么？" class="headerlink" title="5. 0.1+0.2 != 0.3 ，为什么？"></a>5. 0.1+0.2 != 0.3 ，为什么？</h3><p>浮点数0.1和0.2转为二进制时，是无限循环的值，计算机因为资源有限将其表示为近似值，因此出现精度损失。最后将相加的结果再转为10进制输出，结果为0.30000000000000004</p><h3 id="6-什么是BigInt"><a href="#6-什么是BigInt" class="headerlink" title="6. 什么是BigInt"></a>6. 什么是BigInt</h3><p>BigInt是第二种数字数据类型，当整数超过Number支持的范围时使用，该数据类型允许我们安全的使用大整数执行算术操作，能表示高分辨率时间戳，使用大整数ID等等，而不用调用库</p><h3 id="7-为什么需要BigInt"><a href="#7-为什么需要BigInt" class="headerlink" title="7. 为什么需要BigInt"></a>7. 为什么需要BigInt</h3><p>因为Number无法精确表示非常大的整数，在JS中，所有数字都是双精度64位浮点数表示，确切的说，JS中Number类型只能安全表示-(2^53-1)~(2^53-1)范围的数值，会将非常大的整数四舍五入，在任何超出此范围的整数都会失去精度：</p><blockquote><p>console.log(9999 9999 9999 999) -&gt; 1000 0000 0000 0000<br>console.log(9007199254740992 === 9007199254740993) -&gt;true</p></blockquote><p>Math.pow(2, 53) 竟然与 Math.pow(2, 53) + 1 相等，则安全范围是-(2^53-1)~(2^53-1)</p><h3 id="8-如何创建并使用BigInt"><a href="#8-如何创建并使用BigInt" class="headerlink" title="8. 如何创建并使用BigInt?"></a>8. 如何创建并使用BigInt?</h3><p>两种方式：</p><ul><li><input disabled="" type="checkbox"> 在数字末尾添加n就可以<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">9007199254740995n</span>) <span class="comment">//9007199254740995n</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">9007199254740995</span>) <span class="comment">//9007199254740996</span></span><br></pre></td></tr></table></figure></li><li><input disabled="" type="checkbox"> 使用BigInt()构造函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInt(<span class="string">"9007199254740995"</span>)   <span class="comment">//9007199254740995n</span></span><br></pre></td></tr></table></figure>简单使用：<blockquote><p>10n + 20n; &emsp; // 30n<br>10n - 20n;  &emsp; //-10n<br>+10n;      &emsp;&emsp; //TypeError<br>-10n;        &emsp;&emsp; //-10n<br>10n* 20n    &emsp;//200n<br>20n / 10n   &emsp;//2n<br>23n % 10n &emsp;//3n<br>10n ** 3n  &emsp;//1000n</p></blockquote></li></ul><blockquote><p>const x= 10n;<br>++x; &emsp;// 11n<br>–x;  &emsp; // 9n<br>console.log(x)  // bigint</p></blockquote><p><strong>注意：</strong></p><p>1) BigInt不支持一元加号运算符，这可能是某些程序可能依赖于+始终生成Number类型，或者抛出异常，另外，更改+的行为也会破坏asm.js代码。<br>2) 不允许BigInt和Number之间进行混合操作，因为隐式类型转换可能会丢失信息，</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> + <span class="number">10n</span>; <span class="comment">// → TypeError</span></span><br></pre></td></tr></table></figure><p>3) 不能将BigInt传递给Web API和JS内置方法，这些函数需要Number类型。<br>4) 当Boolean和BigInt相遇时，和Number类似，除了0n为false，其他值为true</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">0n</span>)&#123;</span><br><span class="line"><span class="comment">//条件判断为false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="number">3n</span>)&#123;</span><br><span class="line"><span class="comment">//条件为true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5) 元素都为BigInt的数组都可以进行sort<br>6) BigInt可以进行位运算</p><h3 id="9-typeof是否能正确判断类型？"><a href="#9-typeof是否能正确判断类型？" class="headerlink" title="9. typeof是否能正确判断类型？"></a>9. typeof是否能正确判断类型？</h3><p>对于<strong>原始类型</strong>来说，除了null都可以调用typeof显示正确的类型。</p><blockquote><p>typeof 1 // ‘number’<br>typeof ‘1’ // ‘string’<br>typeof undefined // ‘undefined’<br>typeof true // ‘boolean’<br>typeof Symbol() // ‘symbol’</p></blockquote><p>对于<strong>引用数据</strong>类型，除了function类型，其他都输出Object</p><blockquote><p>typeof [] // ‘Object’<br>typeof {} //‘Object<br>typeof console.log //‘function’</p></blockquote><p>因此采用typeof判断对象数据类型不合适，而采用instanceof会更好。因为instanceof运算符用来检测构造函数的prototype是否出现在某个实例的<strong>proto</strong>对象原型上。</p><h3 id="10-instanceof能否判断基本数据类型？"><a href="#10-instanceof能否判断基本数据类型？" class="headerlink" title="10. instanceof能否判断基本数据类型？"></a>10. instanceof能否判断基本数据类型？</h3><p>instanceof能判断，但是不能直接使用，需要自定义instanceof将其转换为使用typeof判断</p><p>方法如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Symbol.hasInstance ：用于判断某对象是否为某构造器的实例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimitiveNumber</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> [<span class="built_in">Symbol</span>.hasInstance] (x) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> x === <span class="string">'number'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( <span class="number">111</span> <span class="keyword">instanceof</span> PrimitiveNumber )</span><br></pre></td></tr></table></figure><h3 id="11-能不能手动实现一下instanceof的功能？"><a href="#11-能不能手动实现一下instanceof的功能？" class="headerlink" title="11. 能不能手动实现一下instanceof的功能？"></a>11. 能不能手动实现一下instanceof的功能？</h3><p><strong>核心：</strong>原型链向上查找</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function myInstanceof (left,right)&#123;</span><br><span class="line">    &#x2F;&#x2F;基本数据类型直接返回false</span><br><span class="line">    if ( typeof left !&#x3D;&#x3D; &#39;object&#39; || left &#x3D;&#x3D;&#x3D;null )</span><br><span class="line">        return false;</span><br><span class="line">    &#x2F;&#x2F; getPrototypeof是object对象自带的一个方法，能拿到参数的原型对象</span><br><span class="line">    left proto &#x3D; object.getPrototypeof (false);</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;查找到尽头，还没找到</span><br><span class="line">        if（proto &#x3D;&#x3D; null）return false;</span><br><span class="line">        &#x2F;&#x2F;找到相同原型对象</span><br><span class="line">        if(proto &#x3D;&#x3D; right.prototype) return true;</span><br><span class="line">        proto &#x3D; object.getPrototypeof (proto);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python数据处理</title>
       <link href="/2021/09/30/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/"/>
       <url>/2021/09/30/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/</url>
       
@@ -61,7 +162,7 @@
     
     
     <entry>
-      <title>纯代码实现数组封装栈、队列</title>
+      <title>Arry封装栈、队列</title>
       <link href="/2021/08/07/%E6%A0%88/"/>
       <url>/2021/08/07/%E6%A0%88/</url>
       
@@ -80,7 +181,7 @@
     
     
     <entry>
-      <title>不同类型数据进行运算</title>
+      <title>C语言中的不同数据类型运算问题</title>
       <link href="/2020/09/14/%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97/"/>
       <url>/2020/09/14/%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97/</url>
       
@@ -99,7 +200,7 @@
     
     
     <entry>
-      <title>安装hexo博客+部署到github</title>
+      <title>Hexo安装、部署</title>
       <link href="/2020/09/14/hello-world/"/>
       <url>/2020/09/14/hello-world/</url>
       
@@ -118,7 +219,7 @@
     
     
     <entry>
-      <title>绑定域名</title>
+      <title>域名</title>
       <link href="/2020/09/14/DNS/"/>
       <url>/2020/09/14/DNS/</url>
       
@@ -137,7 +238,7 @@
     
     
     <entry>
-      <title>hexo部署到GitHub+coding实现国内外网站加速</title>
+      <title>hexo部署</title>
       <link href="/2020/09/14/coding/"/>
       <url>/2020/09/14/coding/</url>
       
