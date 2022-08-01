@@ -1459,7 +1459,7 @@ canvas:not(#ribbon-canvas),
   overflow: auto;
   margin: 0 0 1rem;
   padding: 0;
-  background: #f8f8ff;
+  background: #f8f8f8;
   color: #000;
   line-height: 20px;
 }
@@ -1522,11 +1522,11 @@ blockquote footer cite:before {
   border: none;
 }
 #article-container figure.highlight .line::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container figure.highlight .line.marked {
-  background-color: #7b68ee;
+  background-color: #a3a3a3;
 }
 #article-container figure.highlight table {
   position: relative;
@@ -1565,7 +1565,7 @@ blockquote footer cite:before {
 #article-container figure.highlight .gutter pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  background-color: #f8f8ff;
+  background-color: #f8f8f8;
   color: #3a3f58;
   text-align: right;
 }
@@ -1573,7 +1573,7 @@ blockquote footer cite:before {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   width: 100%;
-  background-color: #f8f8ff;
+  background-color: #f8f8f8;
 }
 #article-container figure.highlight .line {
   height: 1rem;
@@ -1600,13 +1600,13 @@ blockquote footer cite:before {
   background: #800000;
 }
 #article-container pre .meta {
-  color: #c792ea;
+  color: #515151;
 }
 #article-container pre .comment {
-  color: #9eeb85;
+  color: #636363;
 }
 #article-container pre .comment::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .variable,
@@ -1621,7 +1621,7 @@ blockquote footer cite:before {
 #article-container pre .tag .name,
 #article-container pre .css .class,
 #article-container pre .css .pseudo {
-  color: #ff5370;
+  color: #000;
 }
 #article-container pre .variable::selection,
 #article-container pre .attribute::selection,
@@ -1635,14 +1635,14 @@ blockquote footer cite:before {
 #article-container pre .tag .name::selection,
 #article-container pre .css .class::selection,
 #article-container pre .css .pseudo::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .tag {
   color: #89ddff;
 }
 #article-container pre .tag::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .number,
@@ -1659,14 +1659,14 @@ blockquote footer cite:before {
 #article-container pre .params::selection,
 #article-container pre .constant::selection,
 #article-container pre .command::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .built_in {
   color: #6a5acd;
 }
 #article-container pre .built_in::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .ruby .class .title,
@@ -1680,7 +1680,7 @@ blockquote footer cite:before {
 #article-container pre .special,
 #article-container pre .number,
 #article-container pre .formula {
-  color: #ffb993;
+  color: #1acabd;
 }
 #article-container pre .ruby .class .title::selection,
 #article-container pre .css .rules .attribute::selection,
@@ -1693,7 +1693,7 @@ blockquote footer cite:before {
 #article-container pre .special::selection,
 #article-container pre .number::selection,
 #article-container pre .formula::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .keyword,
@@ -1704,7 +1704,7 @@ blockquote footer cite:before {
 #article-container pre .keyword::selection,
 #article-container pre .title::selection,
 #article-container pre .css .hexcolor::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .function,
@@ -1725,16 +1725,16 @@ blockquote footer cite:before {
 #article-container pre .perl .sub::selection,
 #article-container pre .javascript .title::selection,
 #article-container pre .coffeescript .title::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 #article-container pre .tag .attr,
 #article-container pre .javascript .function {
-  color: #c792ea;
+  color: #515151;
 }
 #article-container pre .tag .attr::selection,
 #article-container pre .javascript .function::selection {
-  background: #7b68ee;
+  background: #a3a3a3;
   color: #000;
 }
 .highlight-tools {
@@ -1742,7 +1742,7 @@ blockquote footer cite:before {
   overflow: hidden;
   width: 100%;
   height: 1.4rem;
-  background: #dfdfff;
+  background: #ebebeb;
   color: #000;
   font-size: 14px;
 }
@@ -3807,7 +3807,7 @@ img {
   top: 0;
   right: 0;
   z-index: 1;
-  background: #dfdfff;
+  background: #ebebeb;
   color: #89ddff;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
