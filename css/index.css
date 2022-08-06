@@ -1459,8 +1459,8 @@ canvas:not(#ribbon-canvas),
   overflow: auto;
   margin: 0 0 1rem;
   padding: 0;
-  background: #263238;
-  color: #eff;
+  background: #282a36;
+  color: #fff;
   line-height: 20px;
 }
 .code-area-wrap {
@@ -1509,7 +1509,7 @@ blockquote footer cite:before {
 #article-container pre code {
   padding: 0;
   background: none;
-  color: #eff;
+  color: #ff78aa;
   text-shadow: none;
 }
 #article-container figure.highlight {
@@ -1522,11 +1522,11 @@ blockquote footer cite:before {
   border: none;
 }
 #article-container figure.highlight .line::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container figure.highlight .line.marked {
-  background-color: rgba(128,203,196,0.125);
+  background-color: #327fd4;
 }
 #article-container figure.highlight table {
   position: relative;
@@ -1542,7 +1542,7 @@ blockquote footer cite:before {
 #article-container figure.highlight figcaption {
   zoom: 1;
   padding: 0.3rem 0 0.1rem 0.7rem;
-  color: #eff;
+  color: #ff78aa;
   font-size: 1em;
   line-height: 1em;
 }
@@ -1557,23 +1557,23 @@ blockquote footer cite:before {
 #article-container figure.highlight figcaption a {
   float: right;
   padding-right: 10px;
-  color: #eff;
+  color: #ff78aa;
 }
 #article-container figure.highlight figcaption a:hover {
-  border-bottom-color: #eff;
+  border-bottom-color: #ff78aa;
 }
 #article-container figure.highlight .gutter pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  background-color: #263238;
-  color: #37474f;
+  background-color: #282a36;
+  color: #fff;
   text-align: right;
 }
 #article-container figure.highlight .code pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   width: 100%;
-  background-color: #263238;
+  background-color: #282a36;
 }
 #article-container figure.highlight .line {
   height: 1rem;
@@ -1600,14 +1600,14 @@ blockquote footer cite:before {
   background: #800000;
 }
 #article-container pre .meta {
-  color: #c792ea;
+  color: #fff;
 }
 #article-container pre .comment {
-  color: #546e7a;
+  color: #99a;
 }
 #article-container pre .comment::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .variable,
 #article-container pre .attribute,
@@ -1621,7 +1621,7 @@ blockquote footer cite:before {
 #article-container pre .tag .name,
 #article-container pre .css .class,
 #article-container pre .css .pseudo {
-  color: #ff5370;
+  color: #f1fa8c;
 }
 #article-container pre .variable::selection,
 #article-container pre .attribute::selection,
@@ -1635,39 +1635,37 @@ blockquote footer cite:before {
 #article-container pre .tag .name::selection,
 #article-container pre .css .class::selection,
 #article-container pre .css .pseudo::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .tag {
-  color: #89ddff;
+  color: #99a;
 }
 #article-container pre .tag::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .number,
 #article-container pre .preprocessor,
 #article-container pre .literal,
-#article-container pre .params,
 #article-container pre .constant,
 #article-container pre .command {
-  color: #f78c6c;
+  color: rab(139, 233, 241);
 }
 #article-container pre .number::selection,
 #article-container pre .preprocessor::selection,
 #article-container pre .literal::selection,
-#article-container pre .params::selection,
 #article-container pre .constant::selection,
 #article-container pre .command::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .built_in {
-  color: #ffcb6b;
+  color: #8be9f1;
 }
 #article-container pre .built_in::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .ruby .class .title,
 #article-container pre .css .rules .attribute,
@@ -1680,7 +1678,7 @@ blockquote footer cite:before {
 #article-container pre .special,
 #article-container pre .number,
 #article-container pre .formula {
-  color: #c3e88d;
+  color: #f1fa8c;
 }
 #article-container pre .ruby .class .title::selection,
 #article-container pre .css .rules .attribute::selection,
@@ -1693,57 +1691,55 @@ blockquote footer cite:before {
 #article-container pre .special::selection,
 #article-container pre .number::selection,
 #article-container pre .formula::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+  background: #327fd4;
+  color: #ff78aa;
 }
 #article-container pre .keyword,
 #article-container pre .title,
 #article-container pre .css .hexcolor {
-  color: #89ddff;
+  color: #ff78aa;
 }
-#article-container pre .keyword::selection,
-#article-container pre .title::selection,
-#article-container pre .css .hexcolor::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+::selection {
+  background: #327fd4;
+  color: #ff78aa;
 }
-#article-container pre .function,
-#article-container pre .python .decorator,
-#article-container pre .python .title,
-#article-container pre .ruby .function .title,
-#article-container pre .ruby .title .keyword,
-#article-container pre .perl .sub,
-#article-container pre .javascript .title,
-#article-container pre .coffeescript .title {
-  color: #82aaff;
+.function,
+.python .decorator,
+.python .title,
+.ruby .function .title,
+.ruby .title,
+.perl .sub,
+.javascript .title,
+.coffeescript .title {
+  color: #99a;
 }
-#article-container pre .function::selection,
-#article-container pre .python .decorator::selection,
-#article-container pre .python .title::selection,
-#article-container pre .ruby .function .title::selection,
-#article-container pre .ruby .title .keyword::selection,
-#article-container pre .perl .sub::selection,
-#article-container pre .javascript .title::selection,
-#article-container pre .coffeescript .title::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+.function::selection,
+.python .decorator::selection,
+.python .title::selection,
+.ruby .function .title::selection,
+.ruby .title::selection,
+.perl .sub::selection,
+.javascript .title::selection,
+.coffeescript .title::selection {
+  background: #327fd4;
+  color: #ff78aa;
 }
-#article-container pre .tag .attr,
-#article-container pre .javascript .function {
-  color: #c792ea;
+.tag .attr,
+.javascript .function {
+  color: #fff;
 }
-#article-container pre .tag .attr::selection,
-#article-container pre .javascript .function::selection {
-  background: rgba(128,203,196,0.125);
-  color: #eff;
+.tag .attr::selection,
+.javascript .function::selection {
+  background: #327fd4;
+  color: #ff78aa;
 }
 .highlight-tools {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 1.4rem;
-  background: #1c2429;
-  color: #eff;
+  background: #1d1f27;
+  color: #99a;
   font-size: 14px;
 }
 #aside_content {
@@ -3763,7 +3759,7 @@ img {
   top: 0;
   z-index: 1;
   padding: 7px 10px;
-  color: #eff;
+  color: #99a;
   cursor: pointer;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -3795,7 +3791,7 @@ img {
   position: absolute;
   left: 15px;
   z-index: 1;
-  color: #eff;
+  color: #ff78aa;
   text-transform: capitalize;
   font-weight: bold;
   font-size: 0.8rem;
@@ -3807,8 +3803,8 @@ img {
   top: 0;
   right: 0;
   z-index: 1;
-  background: #1c2429;
-  color: #89ddff;
+  background: #1d1f27;
+  color: #99a;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -3818,7 +3814,7 @@ img {
   top: 0.4rem;
   right: 10px;
   z-index: 1;
-  color: #89ddff;
+  color: #99a;
   cursor: pointer;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
@@ -3827,7 +3823,7 @@ img {
   transition: color 0.2s;
 }
 .highlight-tools .fa-clipboard:hover {
-  color: #3bc6ff;
+  color: #76768d;
 }
 .katex-wrap {
   overflow: auto;

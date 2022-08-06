@@ -1,4 +1,4 @@
-#web_bg {
+#body-wrap {
   /* webkit内核 5.1 - 6.0 */
   background: -webkit-linear-gradient(left, red, blue);
   /* Opera 11.1 - 12.0 */
@@ -6,5 +6,13 @@
   /* Firefox 3.6 - 15 */
   background: -moz-linear-gradient(right, red, blue);
   /* 标准的语法 */
-  background: linear-gradient(to right, red, blue);
+  /* background: linear-gradient(to right,#FFF0F5,#FFEFD5, #F8F8FF); */
+    background: linear-gradient(to right,rgba(64,178,205,0.5),rgba(65,181,118,.4), rgba(239,217,220,.5));
+}
+#aside_content .card-widget {
+  background: rgb(255,255,255,0.4);
+}
+    
+.recent-post-item {
+  background: rgba(0,0,0,.7)
 }
