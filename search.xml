@@ -48,19 +48,6 @@
     
     
     <entry>
-      <title>css</title>
-      <link href="/2022/08/01/css/"/>
-      <url>/2022/08/01/css/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于 promise 的状态</title>
       <link href="/2022/08/01/promise%E7%90%86%E8%A7%A3/"/>
       <url>/2022/08/01/promise%E7%90%86%E8%A7%A3/</url>
@@ -341,7 +328,7 @@
       <link href="/2020/09/14/DNS/"/>
       <url>/2020/09/14/DNS/</url>
       
-        <content type="html"><![CDATA[<h2 id="注册和配置域名："><a href="#注册和配置域名：" class="headerlink" title="注册和配置域名："></a>注册和配置域名：</h2><ol><li><p>第一步：点击这里领券，暂时有活动，<a href="https://shimo.im/docs/TGyCppPdCdyHTKQq/" target="_blank" rel="noopener">白嫖腾讯云俩top域名各一年!</a>。</p><p>第二步：<a href="https://shimo.im/docs/TGyCppPdCdyHTKQq/" target="_blank" rel="noopener">注册域名</a></p></li><li><p>更改域名解析网址，进入万网<strong>域名控制台–&gt;域名解析–&gt;添加解析</strong></p><p>如下图：</p><p><img src="/img/T4.jpg" alt=""></p><p>​</p><blockquote><p>如果出现DNS状态报错：DNS服务器错误，那就需要将域名DNS改为DNSPod,状态为正常解析才可以顺利访问网站</p><p>如下图：</p><p><img src="/img/T5.png" alt=""></p></blockquote></li></ol><h2 id="添加CNAME文件"><a href="#添加CNAME文件" class="headerlink" title="添加CNAME文件"></a>添加CNAME文件</h2><ol><li>去博客文件夹\source下新建文本文件,命名为CNAME,不需要后缀</li><li>用文本编辑器打开并添加购买域名,如下图:</li></ol><p>​       <img src="/img/T6.png" alt=""></p><h2 id="设置项目的GitHub-Pages"><a href="#设置项目的GitHub-Pages" class="headerlink" title="设置项目的GitHub Pages"></a>设置项目的GitHub Pages</h2><ol><li><p>在 github 上面，打开 <strong>username.github.io</strong> 项目的（Settings）设置，然后在 GitHub Pages的 Custom domain设置里填上购买的域名。比如：</p><p><img src="/img/T7.png" alt=""></p></li></ol><h2 id="重新部署GitHub"><a href="#重新部署GitHub" class="headerlink" title="重新部署GitHub"></a>重新部署GitHub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">#删除public</span><br><span class="line">hexo g</span><br><span class="line">#生成新的静态文件（public文件），生成这个文件是根据&#x2F;source文件中的内容生成</span><br><span class="line">hexo d</span><br><span class="line">#部署</span><br></pre></td></tr></table></figure><p>耐心等待,一开始可能会出现电脑端可以访问但手机不能访问,需要大概十多分钟,就可以了</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="注册和配置域名："><a href="#注册和配置域名：" class="headerlink" title="注册和配置域名："></a>注册和配置域名：</h2><ol><li><p>第一步：点击这里领券，暂时有活动，<a href="https://shimo.im/docs/TGyCppPdCdyHTKQq/" target="_blank" rel="noopener">白嫖腾讯云俩top域名各一年!</a>。</p><p>第二步：<a href="https://shimo.im/docs/TGyCppPdCdyHTKQq/" target="_blank" rel="noopener">注册域名</a></p></li><li><p>更改域名解析网址，进入万网<strong>域名控制台–&gt;域名解析–&gt;添加解析</strong></p><p>如下图：</p><p><img src="/img/T4.jpg" alt=""></p></li></ol><blockquote><p>如果出现DNS状态报错：DNS服务器错误，那就需要将域名DNS改为DNSPod,状态为正常解析才可以顺利访问网站</p><p>如下图：</p><p><img src="/img/T5.png" alt=""></p></blockquote><h2 id="添加CNAME文件"><a href="#添加CNAME文件" class="headerlink" title="添加CNAME文件"></a>添加CNAME文件</h2><ol><li>去博客文件夹\source下新建文本文件,命名为CNAME,不需要后缀</li><li>用文本编辑器打开并添加购买域名,如下图:</li></ol><p>​       <img src="/img/T6.png" alt=""></p><h2 id="设置项目的GitHub-Pages"><a href="#设置项目的GitHub-Pages" class="headerlink" title="设置项目的GitHub Pages"></a>设置项目的GitHub Pages</h2><ol><li><p>在 github 上面，打开 <strong>username.github.io</strong> 项目的（Settings）设置，然后在 GitHub Pages的 Custom domain设置里填上购买的域名。比如：</p><p><img src="/img/T7.png" alt=""></p></li></ol><h2 id="重新部署GitHub"><a href="#重新部署GitHub" class="headerlink" title="重新部署GitHub"></a>重新部署GitHub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">#删除public</span><br><span class="line">hexo g</span><br><span class="line">#生成新的静态文件（public文件），生成这个文件是根据&#x2F;source文件中的内容生成</span><br><span class="line">hexo d</span><br><span class="line">#部署</span><br></pre></td></tr></table></figure><p>耐心等待,一开始可能会出现电脑端可以访问但手机不能访问,需要大概十多分钟,就可以了</p>]]></content>
       
       
       <categories>
