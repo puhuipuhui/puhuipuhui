@@ -148,6 +148,25 @@
     
     
     <entry>
+      <title>Vue 手写点击高亮</title>
+      <link href="/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/"/>
+      <url>/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"chooerr-list"</span>&gt;</span><br><span class="line">      &lt;li :<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123;active:nowIndex === item.id&#125;"</span> </span><br><span class="line">          v-<span class="keyword">for</span>=<span class="string">"(item) in timerDate"</span> </span><br><span class="line">          :key=<span class="string">"item.id"</span> </span><br><span class="line">          @click=<span class="string">"timerHandle(item.id)"</span></span><br><span class="line">       &gt; &#123;&#123;item.value&#125;&#125; </span><br><span class="line">       &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure><p><img src="/img/1657892137824.png" alt="65789213782"></p><h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">timerDate:[&#123;</span><br><span class="line">       id:<span class="number">0</span>,</span><br><span class="line">       value:<span class="string">'一个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">1</span>,</span><br><span class="line">       value:<span class="string">'三个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">2</span>,</span><br><span class="line">       value:<span class="string">'六个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">3</span>,</span><br><span class="line">       value:<span class="string">'九个月'</span></span><br><span class="line">     &#125;]</span><br></pre></td></tr></table></figure><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">  timerHandle(data)&#123;</span><br><span class="line">    <span class="keyword">this</span>.nowIndex=data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>添加meta控制用户访问权限</title>
       <link href="/2022/05/07/%E8%B7%AF%E7%94%B1%E6%9D%83%E9%99%90/"/>
       <url>/2022/05/07/%E8%B7%AF%E7%94%B1%E6%9D%83%E9%99%90/</url>
@@ -167,25 +186,6 @@
             <tag> Vue </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Vue 手写点击高亮</title>
-      <link href="/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/"/>
-      <url>/2022/05/07/%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%B7%BB%E5%8A%A0%E9%AB%98%E4%BA%AE/</url>
-      
-        <content type="html"><![CDATA[<h1 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"chooerr-list"</span>&gt;</span><br><span class="line">      &lt;li :<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123;active:nowIndex === item.id&#125;"</span> </span><br><span class="line">          v-<span class="keyword">for</span>=<span class="string">"(item) in timerDate"</span> </span><br><span class="line">          :key=<span class="string">"item.id"</span> </span><br><span class="line">          @click=<span class="string">"timerHandle(item.id)"</span></span><br><span class="line">       &gt; &#123;&#123;item.value&#125;&#125; </span><br><span class="line">       &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure><p><img src="/img/1657892137824.png" alt="65789213782"></p><h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">timerDate:[&#123;</span><br><span class="line">       id:<span class="number">0</span>,</span><br><span class="line">       value:<span class="string">'一个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">1</span>,</span><br><span class="line">       value:<span class="string">'三个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">2</span>,</span><br><span class="line">       value:<span class="string">'六个月'</span></span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       id:<span class="number">3</span>,</span><br><span class="line">       value:<span class="string">'九个月'</span></span><br><span class="line">     &#125;]</span><br></pre></td></tr></table></figure><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">  timerHandle(data)&#123;</span><br><span class="line">    <span class="keyword">this</span>.nowIndex=data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> Vue </category>
-          
-      </categories>
-      
       
     </entry>
     

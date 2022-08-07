@@ -163,7 +163,7 @@ table td {
   float: right;
 }
 .button--primary {
-  color: #3388e5;
+  color: #ff4aa6;
 }
 .button--animated {
   -webkit-transition-duration: 1s;
@@ -184,7 +184,7 @@ table td {
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: #3388e5;
+  background: #ff4aa6;
   content: '';
   -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
@@ -2069,7 +2069,7 @@ blockquote footer cite:before {
   line-height: 1.2rem;
 }
 .category-content ul li:hover:before {
-  border-color: #3388e5;
+  border-color: #ff4aa6;
 }
 .category-content ul li:before {
   top: 10px;
@@ -3268,7 +3268,7 @@ blockquote footer cite:before {
   color: #858585;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap .sticky {
-  color: #3388e5;
+  color: #ff4aa6;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap i {
   margin: 0 0.2rem 0 0;
@@ -3308,7 +3308,7 @@ blockquote footer cite:before {
   transition: all 0.3s;
 }
 .tag-cloud a:hover {
-  color: #3388e5 !important;
+  color: #ff4aa6 !important;
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -3357,7 +3357,7 @@ blockquote footer cite:before {
   line-height: 1;
 }
 .article-sort-title:hover:before {
-  border-color: #3388e5;
+  border-color: #ff4aa6;
 }
 .article-sort-title:before {
   position: absolute;
@@ -3399,7 +3399,7 @@ blockquote footer cite:before {
   transition: all 0.2s ease-in-out;
 }
 .article-sort-item:hover:before {
-  border-color: #3388e5;
+  border-color: #ff4aa6;
 }
 .article-sort-item:before {
   position: absolute;
@@ -3451,7 +3451,7 @@ blockquote footer cite:before {
 }
 .article-sort-item.year:before {
   top: 0.7rem;
-  border-color: #3388e5;
+  border-color: #ff4aa6;
 }
 .article-sort-item__time {
   padding-left: 0.4rem;
@@ -4174,7 +4174,7 @@ img {
 #rightside > div > i:hover,
 #rightside > div > a:hover,
 #rightside > div > div:hover {
-  background-color: #3388e5;
+  background-color: #ff4aa6;
 }
 #rightside #rightside_config i {
   -webkit-animation: avatar_turn_around 2s linear infinite;
@@ -5327,7 +5327,7 @@ figure.gallery-group .gallery-group-name:after {
   line-height: 1.7;
 }
 #local-search .local-search__hit-item:hover:before {
-  border-color: #3388e5;
+  border-color: #ff4aa6;
 }
 #local-search .local-search__hit-item:before {
   position: absolute;
