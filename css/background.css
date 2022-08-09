@@ -7,11 +7,103 @@
   background: -moz-linear-gradient(right, red, blue);
   /* 标准的语法 */
   /* background: linear-gradient(to right,#FFF0F5,#FFEFD5, #F8F8FF); */
-    background: linear-gradient(to right,rgba(64,178,205,0.5),rgba(65,181,118,.4), rgba(239,217,220,.5));
+  background: linear-gradient(to right, rgba(72, 71, 69, 0.2), rgba(191, 143, 190, 0.2), rgba(232, 108, 162, .2));
 }
-#aside_content .card-widget {
-  background: rgb(255,255,255,0.4);
+
+#aside_content .card-widget,
+#recent-posts .recent-post-item {
+  background: rgb(255, 255, 255, 0.4);
 }
+
 .recent-post-item {
-  background: rgba(0,0,0,.7)
+  background: rgba(0, 0, 0, .7)
+}
+
+#bookmark-it .bookmark .button--primary .button--animated {
+  border-radius: 7px
+}
+
+#footer {
+  margin-top: 40px;
+  background: rgb(72, 71, 69);
+  height: 190px;
+}
+
+#footer-wrap {
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  margin-top: 20px;
+  background: url(/img/bear.png) rgb(72, 71, 69) no-repeat;
+  /* 我们元素可以添加多个动画， 用逗号分隔 */
+  animation: bear .4s steps(8) infinite, move 3s forwards;
+}
+
+#footer-wrap .copyright {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  transform: translateX(10%);
+  color: rgb(232, 108, 162);
+}
+
+#footer-wrap .framework-info {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  transform: translateX(10%);
+  color: rgb(232, 108, 162);
+}
+
+.ceilingLamp {
+  position: absolute;
+  top: 100%;
+  right: 15vh;
+  width: 10px;
+  border: 6px dashed rgb(230, 106, 160);
+  background-color: rgb(72, 61, 78);
+  height: 0px;
+}
+
+.fly {
+  position: absolute;
+  width: 120px;
+  height: 130px;
+  background: url(/img/fly.png) no-repeat;
+  transform: translate(-50%, -35%);
+  /* 我们元素可以添加多个动画， 用逗号分隔 */
+  animation: flyKuluomi 1s steps(4) infinite;
+}
+
+@keyframes bear {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -1600px 0;
+  }
+}
+
+@keyframes move {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 50%;
+    /* margin-left: -100px; */
+    transform: translateX(-50%);
+  }
+}
+
+
+@keyframes flyKuluomi {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -480px 0;
+  }
 }
