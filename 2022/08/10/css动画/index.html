@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>css动画 | PH</title><meta name="description" content="animation属性值：  animation-name：设置动画名称 animation-duration：设置动画完成所需时间，默认为0 animation-timing-function：设置动画的速度曲线，默认为 ease； animation-delay：设置动画开始之前的延迟时间，默认为 0； animation-iteration-count：设置动画被播放的次数，默认为 1； a"><meta name="keywords" content="动画"><meta name="author" content="Pu Hui"><meta name="copyright" content="Pu Hui"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="css动画"><meta name="twitter:description" content="animation属性值：  animation-name：设置动画名称 animation-duration：设置动画完成所需时间，默认为0 animation-timing-function：设置动画的速度曲线，默认为 ease； animation-delay：设置动画开始之前的延迟时间，默认为 0； animation-iteration-count：设置动画被播放的次数，默认为 1； a"><meta name="twitter:image" content="https://img-blog.csdnimg.cn/7271d7a4a8844db3bf90ff5702aafc44.png"><meta property="og:type" content="article"><meta property="og:title" content="css动画"><meta property="og:url" content="http://yoursite.com/2022/08/10/css%E5%8A%A8%E7%94%BB/"><meta property="og:site_name" content="PH"><meta property="og:description" content="animation属性值：  animation-name：设置动画名称 animation-duration：设置动画完成所需时间，默认为0 animation-timing-function：设置动画的速度曲线，默认为 ease； animation-delay：设置动画开始之前的延迟时间，默认为 0； animation-iteration-count：设置动画被播放的次数，默认为 1； a"><meta property="og:image" content="https://img-blog.csdnimg.cn/7271d7a4a8844db3bf90ff5702aafc44.png"><meta property="article:published_time" content="2022-08-10T06:18:23.000Z"><meta property="article:modified_time" content="2022-08-10T07:44:58.293Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2022/08/10/css%E5%8A%A8%E7%94%BB/"><link rel="prev" title="Hexo 主题美化" href="http://yoursite.com/2022/08/29/Hexo%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"><link rel="next" title="this 指向和相关函数介绍" href="http://yoursite.com/2022/08/05/this%20%E6%8C%87%E5%90%91%E5%92%8C%E8%83%BD%E6%94%B9%E5%8F%98%E6%8C%87%E5%90%91%E7%9A%84%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: Pu Hui","link":"链接: ","source":"来源: PH","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: false,
+  highlightShrink: 'none',
+  isFontAwesomeV5: true,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/small.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">20</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#animation"><span class="toc-number">1.</span> <span class="toc-text">animation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-name"><span class="toc-number">1.1.</span> <span class="toc-text">animation-name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-duration"><span class="toc-number">1.2.</span> <span class="toc-text">animation-duration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-timing-function"><span class="toc-number">1.3.</span> <span class="toc-text">animation-timing-function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-fill-mode"><span class="toc-number">1.4.</span> <span class="toc-text">animation-fill-mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-delay"><span class="toc-number">1.5.</span> <span class="toc-text">animation-delay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-iteration-count"><span class="toc-number">1.6.</span> <span class="toc-text">animation-iteration-count</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-direction"><span class="toc-number">1.7.</span> <span class="toc-text">animation-direction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation-play-state"><span class="toc-number">1.8.</span> <span class="toc-text">animation-play-state</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://img-blog.csdnimg.cn/7271d7a4a8844db3bf90ff5702aafc44.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">PH</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">css动画</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2022-08-10 14:18:23"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2022-08-10</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2022-08-10 15:44:58"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2022-08-10</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CSS/">CSS</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h1><p>属性值：</p>
+<blockquote>
+<p>animation-name：设置动画名称</p>
+<p>animation-duration：设置动画完成所需时间，默认为<code>0</code></p>
+<p>animation-timing-function：设置动画的速度曲线，默认为 <code>ease</code>；</p>
+<p>animation-delay：设置动画<code>开始</code>之前的延迟时间，默认为 <code>0</code>；</p>
+<p>animation-iteration-count：设置动画被播放的次数，默认为 <code>1</code>；</p>
+<p>animation-direction：设置是否在下一周期逆向播放动画，默认为 <code>normal</code>；</p>
+<p>animation-fill-mode：设置当动画不播放时（动画播放完或延迟播放时）的状态；</p>
+<p>animation-play-state ：设置动画是正在运行还是暂停，默认是 running；</p>
+<p>animation：所有动画属性的简写属性。</p>
+</blockquote>
+<p>是动画的简写形式，语法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">animation-name</span> <span class="selector-tag">animation-duration</span> <span class="selector-tag">animation-timing-function</span> <span class="selector-tag">animation-delay</span> <span class="selector-tag">animation-iteration-count</span> <span class="selector-tag">animation-direction</span> <span class="selector-tag">animation-fill-mode</span> <span class="selector-tag">animation-play-state</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中每个参数分别对应上面介绍的各个属性，如果<code>省略</code>其中的某个或多个值，则将使用该属性对应的<code>默认值</code>。</p>
+<p>一般用法足够：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 动画名 、需要5s完成 、线性匀速、动画次数循环次 */</span></span><br><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">name</span> 5<span class="selector-tag">s</span> <span class="selector-tag">linear</span> <span class="selector-tag">infinite</span>;</span><br><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">animation-name</span> <span class="selector-tag">animation-duration</span> <span class="selector-tag">animation-timing-function</span> <span class="selector-tag">animation-iteration-count</span> ;</span><br><span class="line"><span class="comment">/* 动画定义*/</span></span><br><span class="line"><span class="keyword">@keyframes</span> name</span><br><span class="line">&#123;</span><br><span class="line">	from &#123; 状态 &#125; // 0%&#123; 状态 &#125;</span><br><span class="line">	to &#123; 状态 &#125; // 100%&#123; 状态 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以同时使用多个动画，之间用<code>逗号</code>分割：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 小熊动画代码 */</span></span><br><span class="line"><span class="selector-class">.bear</span> &#123;</span><br><span class="line">            <span class="attribute">position</span>: absolute;</span><br><span class="line">            <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">border</span>:  solid <span class="built_in">rgb</span>(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>) <span class="number">1px</span>;</span><br><span class="line">            <span class="attribute">background</span>: <span class="built_in">url</span>(media/bear.png) no-repeat;</span><br><span class="line">            <span class="comment">/* 我们元素可以添加多个动画， 用逗号分隔 */</span></span><br><span class="line">            <span class="attribute">animation</span>: bear <span class="number">1s</span> <span class="built_in">steps</span>(<span class="number">8</span>) infinite,move <span class="number">4s</span> forwards;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">@keyframes</span> bear &#123;</span><br><span class="line">            0% &#123;</span><br><span class="line">                <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            100% &#123;</span><br><span class="line">                <span class="attribute">background-position</span>: -<span class="number">1600px</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">@keyframes</span> move &#123;</span><br><span class="line">            0% &#123;</span><br><span class="line">                <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            100% &#123;</span><br><span class="line">                <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">                <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</span><br><span class="line">                <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h2><p><code>animation-name</code> 属性用来将动画绑定到指定的 <code>HTML</code> 元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">            width: <span class="number">100</span>px;</span><br><span class="line">            height: <span class="number">100</span>px;</span><br><span class="line">            border-radius: <span class="number">50</span>%;</span><br><span class="line">            border: <span class="number">3</span>px solid black;</span><br><span class="line">            position: relative;</span><br><span class="line">            animation-name: ball;</span><br><span class="line">        &#125;</span><br><span class="line">@keyframes ball &#123;</span><br><span class="line">            <span class="number">0</span>% &#123; <span class="attr">top</span>: <span class="number">0</span>px; left: <span class="number">0</span>px;&#125;</span><br><span class="line">            <span class="number">25</span>% &#123; <span class="attr">top</span>: <span class="number">0</span>px; left: <span class="number">350</span>px;&#125;</span><br><span class="line">            <span class="number">50</span>% &#123; <span class="attr">top</span>: <span class="number">200</span>px; left: <span class="number">350</span>px;&#125;</span><br><span class="line">            <span class="number">75</span>% &#123; <span class="attr">top</span>: <span class="number">200</span>px; left: <span class="number">0</span>px;&#125;</span><br><span class="line">            <span class="number">100</span>% &#123; <span class="attr">top</span>: <span class="number">0</span>px; left: <span class="number">0</span>px;&#125; </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>animation-name: ball</code>使用动画</p>
+<h2 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h2><p><code>animation-duration</code> 属性用来设置动画完成一个周期所需要花费的时间，单位为秒或者毫秒。</p>
+<h2 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h2><p><code>animation-timing-function</code> 属性用来设置动画播放的速度曲线，通过速度曲线的设置可以使动画播放的更为平滑。<code>animation-timing-function</code> 属性的可选值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">linear</td>
+<td align="center">线性匀速</td>
+</tr>
+<tr>
+<td align="center">ease</td>
+<td align="center">默认值，动画以低速开始，然后加快，在结束前变慢</td>
+</tr>
+<tr>
+<td align="center">ease-in</td>
+<td align="center">动画以低速开始</td>
+</tr>
+<tr>
+<td align="center">ease-out</td>
+<td align="center">动画以低速结束</td>
+</tr>
+<tr>
+<td align="center">ease-in-out</td>
+<td align="center">动画以低速开始，并以低速结束</td>
+</tr>
+<tr>
+<td align="center">cubic-bezier(n, n, n, n)</td>
+<td align="center">使用 cubic-bezier() 函数来定义动画的播放速度，参数的取值范围为 0 到 1 之间的数值</td>
+</tr>
+</tbody></table>
+<h2 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h2><p><code>animation-fill-mode</code> 属性用来设置当动画不播放时（开始播放之前或播放结束之后）动画的状态（样式），属性的可选值如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">none</td>
+<td align="center">不改变动画的默认行为</td>
+</tr>
+<tr>
+<td align="center">forwards</td>
+<td align="center">当动画播放完成后，保持动画最后一个关键帧中的样式</td>
+</tr>
+<tr>
+<td align="center">backwards</td>
+<td align="center">在 <code>animation-delay</code> 所指定的时间段内，应用动画第一个关键帧中的样式</td>
+</tr>
+<tr>
+<td align="center">both</td>
+<td align="center">同时遵循 <code>forwards</code> 和 <code>backwards</code> 的规则</td>
+</tr>
+</tbody></table>
+<h2 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h2><p><code>animation-delay</code> 属性用来定义动画开始播放前的延迟时间，单位为秒或者毫秒，属性的语法格式如下：</p>
+<p>其中参数 <code>time</code> 就是动画播放前的延迟时间，参数 <code>time</code> 既可以为正值也可以为负值。参数值为正时，表示延迟指定时间开始播放；参数为负时，表示跳过指定时间，并立即播放动画。</p>
+<h2 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h2><p><code>animation-iteration-count</code> 属性用来定义动画播放的次数，属性的可选值如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">n</td>
+<td align="center">使用具体数值定义动画播放的次数，默认值为 1</td>
+</tr>
+<tr>
+<td align="center">infinite</td>
+<td align="center">表示动画无限次播放</td>
+</tr>
+</tbody></table>
+<h2 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h2><p><code>animation-direction</code> 属性用来设置是否轮流反向播放动画，属性的可选值如下：</p>
+<p>比如顺时针、逆时针；向左、向右。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>以正常的方式播放动画</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>以相反的方向播放动画</td>
+</tr>
+<tr>
+<td>alternate</td>
+<td>播放动画时，奇数次（1、3、5 等）正常播放，偶数次（2、4、6 等）反向播放</td>
+</tr>
+<tr>
+<td>alternate-reverse</td>
+<td>播放动画时，奇数次（1、3、5 等）反向播放，偶数次（2、4、6 等）正常播放</td>
+</tr>
+</tbody></table>
+<h2 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h2><p><code>animation-play-state</code> 属性用来设置动画是播放还是暂停，属性的可选值如下：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>paused</td>
+<td>暂停动画的播放</td>
+</tr>
+<tr>
+<td>running</td>
+<td>正常播放动画</td>
+</tr>
+</tbody></table>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Pu Hui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2022/08/10/css%E5%8A%A8%E7%94%BB/">http://yoursite.com/2022/08/10/css%E5%8A%A8%E7%94%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">PH</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8A%A8%E7%94%BB/">动画</a></div><div class="post_share"><div class="social-share" data-image="https://c-ssl.duitang.com/uploads/blog/202102/03/20210203132752_f11ff.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/08/29/Hexo%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"><img class="prev_cover" src="https://c-ssl.duitang.com/uploads/blog/202102/03/20210203132752_f11ff.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hexo 主题美化</div></div></a></div><div class="next-post pull_right"><a href="/2022/08/05/this%20%E6%8C%87%E5%90%91%E5%92%8C%E8%83%BD%E6%94%B9%E5%8F%98%E6%8C%87%E5%90%91%E7%9A%84%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/"><img class="next_cover" src="https://img.cc0.cn/unsplash/2019102200275640703.jpg!cc0.cn.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">this 指向和相关函数介绍</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Pu Hui</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode far fa-moon" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/js/my-js/diy.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>

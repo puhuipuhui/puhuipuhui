@@ -46,7 +46,7 @@ function clacHeight(postNode, flyNode) {
   // window.pageYOffset : 是窗口被卷曲的长度
   var extent = window.pageYOffset
   if (navClassName == "full_page") {
-    postNode.style.height = extent - 500 + "px"
+    postNode.style.height = extent - 350 + "px"
     flyNode.style.top = postNode.style.height
   } else {
     postNode.style.height = extent + "px"

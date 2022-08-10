@@ -4977,6 +4977,7 @@ figure.gallery-group .gallery-group-name:after {
 [data-theme='dark'] #post-meta,
 [data-theme='dark'] #post-meta a,
 [data-theme='dark'] #footer-wrap,
+[data-theme='dark'] #footer-wrap a,
 [data-theme='dark'] .img-alt {
   color: rgba(255,255,255,0.6) !important;
 }
