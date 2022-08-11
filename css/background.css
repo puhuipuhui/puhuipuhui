@@ -25,16 +25,19 @@
 
 #footer {
   margin-top: 40px;
-  background: rgb(72, 71, 69);
-  height: 190px;
+  background: url(/img/mountain.png);
+  height: 240px;
+  animation: mountain 15s linear infinite;
+  /* rgb(72, 71, 69) */
 }
 
 #footer-wrap {
   position: absolute;
+  top: 60px;
   width: 200px;
   height: 100px;
   margin-top: 20px;
-  background: url(/img/bear.png) rgb(72, 71, 69) no-repeat;
+  background: url(/img/bear.png) no-repeat;
   /* 我们元素可以添加多个动画， 用逗号分隔 */
   animation: bear .4s steps(8) infinite, move 3s forwards;
 }
@@ -55,6 +58,7 @@
   color: rgb(232, 108, 162);
 }
 
+/* 吊灯 */
 .ceilingLamp {
   position: absolute;
   top: 100%;
@@ -65,6 +69,7 @@
   height: 0px;
 }
 
+/* 飞行的库洛米 */
 .fly {
   position: absolute;
   width: 120px;
@@ -73,6 +78,14 @@
   transform: translate(-50%, -35%);
   /* 我们元素可以添加多个动画， 用逗号分隔 */
   animation: flyKuluomi 1.5s steps(5) infinite;
+}
+
+
+/* 页码样式 */
+#pagination .page-number.current {
+  background: rgb(230, 106, 160);
+  color: rgb(241, 237, 104);
+
 }
 
 @keyframes bear {
@@ -105,5 +118,16 @@
 
   100% {
     background-position: -600px 0;
+  }
+}
+
+@keyframes mountain {
+  0% {
+    background-position: 0 0;
+
+  }
+
+  100% {
+    background-position: -2000px 0;
   }
 }
