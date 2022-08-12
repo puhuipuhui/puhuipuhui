@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript 声明变量 | PH</title><meta name="description" content="变量有3个关键字可以声明变量，var 在所有ECMAScript版本可以使用，而const 、let只能在ECMAScript6 及更晚的版本使用。 var 关键字语法：  单个变量：var message; 定义多个变量： var message&#x3D;”x”,found&#x3D;”y”;  可以同时定义多个变量，用逗号割开即可。 但是值得注意的是，以下方式合法，但是不推荐这样做 12var message"><meta name="keywords" content="JavaScript"><meta name="author" content="Pu Hui"><meta name="copyright" content="Pu Hui"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JavaScript 声明变量"><meta name="twitter:description" content="变量有3个关键字可以声明变量，var 在所有ECMAScript版本可以使用，而const 、let只能在ECMAScript6 及更晚的版本使用。 var 关键字语法：  单个变量：var message; 定义多个变量： var message&#x3D;”x”,found&#x3D;”y”;  可以同时定义多个变量，用逗号割开即可。 但是值得注意的是，以下方式合法，但是不推荐这样做 12var message"><meta name="twitter:image" content="http://yoursite.com/img/default.png"><meta property="og:type" content="article"><meta property="og:title" content="JavaScript 声明变量"><meta property="og:url" content="http://yoursite.com/2022/08/11/%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F/"><meta property="og:site_name" content="PH"><meta property="og:description" content="变量有3个关键字可以声明变量，var 在所有ECMAScript版本可以使用，而const 、let只能在ECMAScript6 及更晚的版本使用。 var 关键字语法：  单个变量：var message; 定义多个变量： var message&#x3D;”x”,found&#x3D;”y”;  可以同时定义多个变量，用逗号割开即可。 但是值得注意的是，以下方式合法，但是不推荐这样做 12var message"><meta property="og:image" content="http://yoursite.com/img/default.png"><meta property="article:published_time" content="2022-08-11T06:14:53.976Z"><meta property="article:modified_time" content="2022-08-11T13:44:40.730Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2022/08/11/%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F/"><link rel="prev" title="前端、后端请求响应案例" href="http://yoursite.com/2022/08/11/Express/"><link rel="next" title="css animation" href="http://yoursite.com/2022/08/10/css%E5%8A%A8%E7%94%BB/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: Pu Hui","link":"链接: ","source":"来源: PH","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: false,
+  highlightShrink: 'none',
+  isFontAwesomeV5: true,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/small.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">22</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#变量"><span class="toc-number">1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#var-关键字"><span class="toc-number">1.1.</span> <span class="toc-text">var 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#let-关键字"><span class="toc-number">1.2.</span> <span class="toc-text">let 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const-关键字"><span class="toc-number">1.3.</span> <span class="toc-text">const 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">1.4.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/default.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">PH</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">JavaScript 声明变量</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2022-08-11 14:14:53"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2022-08-11</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2022-08-11 21:44:40"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2022-08-11</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>有<code>3</code>个关键字可以声明变量，<code>var</code> 在所有<code>ECMAScript</code>版本可以使用，而<code>const</code> 、<code>let</code>只能在<code>ECMAScript6</code> 及更晚的版本使用。</p>
+<h2 id="var-关键字"><a href="#var-关键字" class="headerlink" title="var 关键字"></a>var 关键字</h2><p>语法：</p>
+<blockquote>
+<p>单个变量：var message;</p>
+<p>定义多个变量： var message=”x”,found=”y”;</p>
+</blockquote>
+<p>可以同时定义多个变量，用<strong>逗号</strong>割开即可。</p>
+<p>但是值得注意的是，以下方式合法，但是不推荐这样做</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"h1"</span></span><br><span class="line">message = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>函数作用域</li>
+</ol>
+<p><strong>局部变量</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> message = <span class="string">"h1"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(message) <span class="comment">//出错</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>var</code> 在函数内部定义变量，会变成该函数的局部变量。</p>
+<p><strong>全局变量</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">	message = <span class="string">"h1"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(message) <span class="comment">//h1</span></span><br></pre></td></tr></table></figure>
+
+<p>函数内部定义变量时，省略 <code>var</code> 关键字，可以创建全局变量。但严格模式下，不能为未声明变量赋值，会报错<code>ReFerenceError</code></p>
+<ol start="2">
+<li>var 变量提升</li>
+</ol>
+<p>变量提升就是把所有变量声明都拉到函数作用域的顶部</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(age);</span><br><span class="line">     <span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"> &#125;</span><br><span class="line">test() <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码，不会报错，但是不会输出赋值结果，因为等价于如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">     <span class="built_in">console</span>.log(age);</span><br><span class="line">     age = <span class="number">20</span>;</span><br><span class="line"> &#125;</span><br><span class="line">test() <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="let-关键字"><a href="#let-关键字" class="headerlink" title="let 关键字"></a>let 关键字</h2><ol>
+<li>块级作用域</li>
+</ol>
+<p><code>let</code> 是块级作用域即“{}”（大括号）之间的作用域。这不同于 <code>var</code> ，<code>var</code>是函数作用域。</p>
+<p><code>var：</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'ph'</span></span><br><span class="line">    <span class="built_in">console</span>.log(name) <span class="comment">//ph</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">//ph</span></span><br></pre></td></tr></table></figure>
+
+<p><code>let :</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> name = <span class="string">'ph'</span></span><br><span class="line">    <span class="built_in">console</span>.log(name) <span class="comment">//ph</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">// 抛出 ReFrenceError ： age没定义</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>声明冗余</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> age;</span><br><span class="line"><span class="keyword">let</span> age; <span class="comment">//SyntaxError 已经声明过了</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，有些情况可以重复声明。例如同一个块没有重复声明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'zz'</span></span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">// zz</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> name = <span class="string">'ph'</span></span><br><span class="line">    <span class="built_in">console</span>.log(name) <span class="comment">// ph</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>声明冗余报错不会受混用<code>let</code>和<code>var</code>而影响。这两个关键字生命的并不是不同类型的变量，只是指出变量在相关作用域如何存在。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age;</span><br><span class="line"><span class="keyword">var</span> age; <span class="comment">//SyntaxError </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> age;</span><br><span class="line"><span class="keyword">let</span> age; <span class="comment">//SyntaxError</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>暂时性死区</li>
+</ol>
+<p><code>let</code>没有变量声明，在<code>let</code> 声明之前的执行瞬间被称为“暂时性死区”，会抛出 <code>ReFrenceError</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(age);<span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;   </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(age);<span class="comment">// ReFerenceError: age 没有定义</span></span><br><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>全局声明</li>
+</ol>
+<p>和<code>var</code>不同，<code>let</code> 声明的变量不会成为<code>window</code>对象的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;   </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age);<span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>;  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age);<span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>条件声明</li>
+</ol>
+<p>不能检查出前面是否已经使用<code>let</code> 声明过同名变量，即使使用<code>try/catch</code>语句或者<code>typeof</code>操作符也不能解决，同时也就是可能是：在没声明的时候声明<code>let</code></p>
+<ol start="6">
+<li>for 循环中的<code>let</code>声明</li>
+</ol>
+<p><code>let</code> 声明的变量只在当前<strong>{ }</strong>内，括号外不存在</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123; </span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">console</span>.log(i)  <span class="comment">// 5 还存在 i 变量</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (let i&#x3D;0;i&lt;5;i++)&#123; </span><br><span class="line">&#125;</span><br><span class="line"> console.log(i)  &#x2F;&#x2F; ReFrenceError : i 变量未定义</span><br></pre></td></tr></table></figure>
+
+<p>类似，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	settimeout(<span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">console</span>.log(i),<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出： 5，5，5，5，5</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	settimeout(<span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">console</span>.log(i),<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出： 0，1，2，3，4</p>
+<h2 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a>const 关键字</h2><p><code>const</code>行为基本和<code>let</code>相同，唯一一个区别是：它声明时必须同时初始化变量，且常识修改<code>const</code>声明的变量回导致运行的错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> age = <span class="number">20</span>;</span><br><span class="line">age = <span class="number">30</span> ;  <span class="comment">// TypeError: 给常量赋值</span></span><br></pre></td></tr></table></figure>
+
+<p><code>const</code>不允许重复声明 </p>
+<p><code>const</code>声明的变量也是块级作用域</p>
+<p><code>const</code>声明的变量不能用来声明迭代变量，因为，自增意味着修改值，会报错<code>TypeError</code>：给常量赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">&#125; <span class="comment">// TypeError ：给常量赋值。</span></span><br></pre></td></tr></table></figure>
+
+<p>对于<code>for-in</code>和 <code>for-of</code>循环，每次只是创建新变量，非常有意思</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> key <span class="keyword">in</span> &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(key)</span><br><span class="line">&#125; <span class="comment">// a,b</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(const value of [1,2,3,4])&#123;</span><br><span class="line">	console.log(value)</span><br><span class="line">&#125; &#x2F;&#x2F; 1,2,3,4</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">作用域</th>
+<th align="center">同一作用域中，重复声明</th>
+<th align="center">声明之前使用变量（是否有变量提升）</th>
+<th align="center">是否能改变量值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">var</td>
+<td align="center">函数</td>
+<td align="center">可以</td>
+<td align="center">undefined（有）</td>
+<td align="center">可以</td>
+</tr>
+<tr>
+<td align="center">let</td>
+<td align="center">块</td>
+<td align="center">SyntaxError</td>
+<td align="center">ReFerenceError（没有）</td>
+<td align="center">可以</td>
+</tr>
+<tr>
+<td align="center">const</td>
+<td align="center">块</td>
+<td align="center">SyntaxError</td>
+<td align="center">ReFerenceError（没有）</td>
+<td align="center">TypeError</td>
+</tr>
+</tbody></table>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Pu Hui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2022/08/11/%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F/">http://yoursite.com/2022/08/11/%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">PH</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202011%2F16%2F20201116204246_0ca7a.jpeg&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1662787437&amp;t=aa97045e784995f2d9918232efb2d614" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/08/11/Express/"><img class="prev_cover" src="/img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端、后端请求响应案例</div></div></a></div><div class="next-post pull_right"><a href="/2022/08/10/css%E5%8A%A8%E7%94%BB/"><img class="next_cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F24%2F20200424111242_zsxtn.thumb.1000_0.png&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1662786964&amp;t=e7b179ac5e93677cecd531b75ddb03e6" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">css animation</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2022/08/05/this 指向和能改变指向的函数介绍/" title="this 指向和相关函数介绍"><img class="relatedPosts_cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13016634572%2F641.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662787089&t=54ca100862c839d6ae7c89a4c4adbdd6"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-08-05</div><div class="relatedPosts_title">this 指向和相关函数介绍</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Pu Hui</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode far fa-moon" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/js/my-js/diy.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>
