@@ -62,7 +62,7 @@
 .ceilingLamp {
   position: absolute;
   top: 100%;
-  right: 15vh;
+  right: 15vw;
   width: 0px;
   border: 6px dashed rgb(230, 106, 160);
   background-color: rgb(72, 61, 78);

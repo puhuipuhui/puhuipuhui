@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>计算机网络（第一章内容） | PH</title><meta name="description" content="计算机网络计算机网络指利用通信设备和线路将地理位置不同的功能、多个计算机系统互联起来，以功能完善的网络软件实现网络中资源共享和信息交换的系统。  定义：计算机网络就是互连的、自治的计算机集合。 自治：无主从关系 互连：互联互通  通信链路   Q：距离远、数量大怎么保证互连？ A：通过交换网络互联主机（交换节点：路由器、交换机） 什么是Internet？（组成细节角度）【全球最大的互联网络】  I"><meta name="keywords" content="计算机网络"><meta name="author" content="Pu Hui"><meta name="copyright" content="Pu Hui"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="计算机网络（第一章内容）"><meta name="twitter:description" content="计算机网络计算机网络指利用通信设备和线路将地理位置不同的功能、多个计算机系统互联起来，以功能完善的网络软件实现网络中资源共享和信息交换的系统。  定义：计算机网络就是互连的、自治的计算机集合。 自治：无主从关系 互连：互联互通  通信链路   Q：距离远、数量大怎么保证互连？ A：通过交换网络互联主机（交换节点：路由器、交换机） 什么是Internet？（组成细节角度）【全球最大的互联网络】  I"><meta name="twitter:image" content="http://yoursite.com/img/default.png"><meta property="og:type" content="article"><meta property="og:title" content="计算机网络（第一章内容）"><meta property="og:url" content="http://yoursite.com/2022/08/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/"><meta property="og:site_name" content="PH"><meta property="og:description" content="计算机网络计算机网络指利用通信设备和线路将地理位置不同的功能、多个计算机系统互联起来，以功能完善的网络软件实现网络中资源共享和信息交换的系统。  定义：计算机网络就是互连的、自治的计算机集合。 自治：无主从关系 互连：互联互通  通信链路   Q：距离远、数量大怎么保证互连？ A：通过交换网络互联主机（交换节点：路由器、交换机） 什么是Internet？（组成细节角度）【全球最大的互联网络】  I"><meta property="og:image" content="http://yoursite.com/img/default.png"><meta property="article:published_time" content="2022-08-13T07:29:20.960Z"><meta property="article:modified_time" content="2022-08-21T09:41:00.196Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2022/08/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/"><link rel="prev" title="计算机网络（第二章内容）" href="http://yoursite.com/2022/08/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/"><link rel="next" title="array 原生方法" href="http://yoursite.com/2022/08/13/Array%20%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: Pu Hui","link":"链接: ","source":"来源: PH","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: false,
+  highlightShrink: 'none',
+  isFontAwesomeV5: true,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/small.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Internet？（组成细节角度）"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Internet？（组成细节角度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Internet？（服务角度）"><span class="toc-number">1.2.</span> <span class="toc-text">什么是Internet？（服务角度）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络结构"><span class="toc-number">2.</span> <span class="toc-text">计算机网络结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络边缘"><span class="toc-number">2.1.</span> <span class="toc-text">网络边缘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接入网络"><span class="toc-number">2.2.</span> <span class="toc-text">接入网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络核心"><span class="toc-number">2.3.</span> <span class="toc-text">网络核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Internet结构：网络之网络"><span class="toc-number">2.3.1.</span> <span class="toc-text">Internet结构：网络之网络</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据交换"><span class="toc-number">3.</span> <span class="toc-text">数据交换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#电路交换"><span class="toc-number">3.1.</span> <span class="toc-text">电路交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报文交换"><span class="toc-number">3.2.</span> <span class="toc-text">报文交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分组交换"><span class="toc-number">3.3.</span> <span class="toc-text">分组交换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络性能"><span class="toc-number">4.</span> <span class="toc-text">计算机网络性能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#速率"><span class="toc-number">4.1.</span> <span class="toc-text">速率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽"><span class="toc-number">4.2.</span> <span class="toc-text">带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟-时延"><span class="toc-number">4.3.</span> <span class="toc-text">延迟&#x2F;时延</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时延带宽积"><span class="toc-number">4.4.</span> <span class="toc-text">时延带宽积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分组丢失（丢包）"><span class="toc-number">4.5.</span> <span class="toc-text">分组丢失（丢包）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#吞吐量-率"><span class="toc-number">4.6.</span> <span class="toc-text">吞吐量&#x2F;率</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络的体系结构"><span class="toc-number">5.</span> <span class="toc-text">计算机网络的体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分层网络体系结构"><span class="toc-number">5.1.</span> <span class="toc-text">分层网络体系结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI-参考模型"><span class="toc-number">6.</span> <span class="toc-text">OSI 参考模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI-参考模型解释与通信过程"><span class="toc-number">6.1.</span> <span class="toc-text">OSI 参考模型解释与通信过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI-参考模型数据封装与通信过程"><span class="toc-number">6.2.</span> <span class="toc-text">OSI 参考模型数据封装与通信过程</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/default.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">PH</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">计算机网络（第一章内容）</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2022-08-13 15:29:20"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2022-08-13</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2022-08-21 17:41:00"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2022-08-21</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a><center>计算机网络</h1><p>计算机网络指利用<code>通信设备</code>和<code>线路</code>将地理位置不同的功能、多个计算机系统互联起来，以功能完善的网络软件实现网络中资源共享和信息交换的系统。</p>
+<blockquote>
+<p>定义：计算机网络就是<code>互连</code>的、<code>自治</code>的计算机集合。</p>
+<p>自治：无主从关系</p>
+<p>互连：互联互通</p>
+<ul>
+<li>通信链路</li>
+</ul>
+</blockquote>
+<p>Q：距离远、数量大怎么保证互连？</p>
+<p>A：通过<code>交换网络</code>互联主机（交换节点：路由器、交换机）</p>
+<h2 id="什么是Internet？（组成细节角度）"><a href="#什么是Internet？（组成细节角度）" class="headerlink" title="什么是Internet？（组成细节角度）"></a>什么是<code>Internet</code>？（组成细节角度）</h2><p>【全球最大的<code>互联网络</code>】</p>
+<ul>
+<li><p>ISP（Internet Service Provide）网路互联的<strong>网络之网络</strong></p>
+<p>计算设备：主机 = 端系统 ，运行各种网络应用</p>
+<p>PC　服务器　笔记本　智能手机</p>
+</li>
+</ul>
+<p>【连接方式】</p>
+<ul>
+<li><p><code>通信链路</code></p>
+<p>光纤、铜缆、无线电、卫星 ……</p>
+</li>
+<li><p>分组交换</p>
+<p>转发分组（数据包）</p>
+<p><strong>路由器</strong>（routers）和 <strong>交换机</strong>（switches）</p>
+</li>
+</ul>
+<h2 id="什么是Internet？（服务角度）"><a href="#什么是Internet？（服务角度）" class="headerlink" title="什么是Internet？（服务角度）"></a>什么是<code>Internet</code>？（服务角度）</h2><ul>
+<li><p>为网络应用提供通信服务的通信基础设施</p>
+<p>Web、Email、网络游戏、电子商务……</p>
+</li>
+<li><p>为网络应用提供应用编程接口（<code>API</code>）</p>
+<p>支持应用程序’’连接’’<code>Internet</code>发送 / 接收数据</p>
+</li>
+</ul>
+<h1 id="计算机网络结构"><a href="#计算机网络结构" class="headerlink" title="计算机网络结构"></a><center>计算机网络结构</h1><p>【网络边缘】：</p>
+<p>1、主机    2、网络应用</p>
+<p>接入网络，物理介质：</p>
+<p>有线或无线通信链路</p>
+<p>【网络核心（核心网络）】：</p>
+<p>1、互联的路由器（或分组转发设备）2、网络之网络</p>
+<h2 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h2><p>【主机（端系统）】：位于”<strong>网络边缘</strong>“，运行网络应用程序：web、Email</p>
+<p>【客户/服务器（client/server）应用模型】：客户发送请求，接收服务器响应</p>
+<p>【Peer-peer（P2P）对等的应用模型】：通信<strong>对等</strong>的应用中进行：QQ</p>
+<p>Q：如何将网络边缘接入核心网（边缘路由器）？</p>
+<p>A：接入网络：住宅；学校、企业；移动接入网络</p>
+<blockquote>
+<p> 用户最关心的是？</p>
+<ul>
+<li><p>带宽（bandwidth）（bps）?</p>
+</li>
+<li><p>共享还是独占？</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="接入网络"><a href="#接入网络" class="headerlink" title="接入网络"></a>接入网络</h2><ol>
+<li>数字用户线路（DSL）</li>
+</ol>
+<p>利用<strong>已有的</strong>电话线连接到中心局的<code>DSLAM</code></p>
+<p>【<code>FDM</code>】根据 不同<code>HZ</code>分为：上行、下行、传统通话</p>
+<ol start="2">
+<li>机构（企业）接入网络（Ethernet）</li>
+</ol>
+<p>– 主要用于：学校、公司等组织机构</p>
+<p>– 传输速率：10Mbps、100Mbps、1Gbps、10Gbps</p>
+<p>– 目前，端系统通常直接连接以太网交换机（<code>switch</code>）</p>
+<ol start="3">
+<li>电缆网络</li>
+</ol>
+<p><code>cable modem</code></p>
+<p>频分多路复用：在不同频带（载波）上传输不同频道</p>
+<p>【<code>HFC</code>】混合光纤同轴电缆</p>
+<p>– 非对称：下行高达<code>30Mbps</code>，上行<code>2Mbps</code>传输速率</p>
+<p>– 各家庭设备通过：电缆网络 -&gt;光纤接入<code>ISP</code>路由器</p>
+<p>– 即使<strong>带宽大</strong>、是<strong>共享</strong>的网络也会很慢</p>
+<ol start="4">
+<li>无线接入网络</li>
+</ol>
+<p>通过<strong>共享</strong>的无线接入网络连接端系统与路由器</p>
+<p>通过<code>基站</code>（base station）或称为”<code>接入点</code>“</p>
+<ul>
+<li><p>无线局域网（LANs）</p>
+<p>同一建筑物内（30m）</p>
+</li>
+<li><p>广域无线接入</p>
+<p>通过电信运营商（蜂窝网），接入范围在几十公里</p>
+<p>带宽：1Mbps、10Mbps、100Mbps</p>
+<p>3G、4G、5G 网</p>
+</li>
+</ul>
+<h2 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h2><p>互联的路由器网络</p>
+<p>【关键功能】：<strong>路由</strong> + <strong>转发</strong></p>
+<p>【路由】：确定分组从源到目的的传输路径</p>
+<p><code>路由算法</code></p>
+<p>【转发】：将分组从路由器的输入端口交换至正确的输出端口</p>
+<p><code>本地转发表</code></p>
+<p>路由表是路由器遵循路由协议，路由协议通过路由算法计算获得。</p>
+<blockquote>
+<p>网络核心解决的基本问题：</p>
+<p>Q：如何实现数据从源主机通过网络核心送达目的主机？</p>
+<p>A：数据交换</p>
+</blockquote>
+<h3 id="Internet结构：网络之网络"><a href="#Internet结构：网络之网络" class="headerlink" title="Internet结构：网络之网络"></a>Internet结构：网络之网络</h3><p>端系统通过<code>接入ISP</code>连接到<code>Internet</code></p>
+<blockquote>
+<p>Q：当前的<code>Internet</code>结构 ？</p>
+<p>A：无人能给出精确的描述</p>
+</blockquote>
+<h1 id="数据交换"><a href="#数据交换" class="headerlink" title="数据交换"></a><center>数据交换</h1><p>– 动态转接、动态分配传输资源</p>
+<h2 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h2><p>【三个阶段】电路建立连接-通信-释放连接</p>
+<p>【特点】独占资源</p>
+<blockquote>
+<p>Q：电路交换网络如何共享中继线 ？</p>
+<p>A：多路复用技术</p>
+</blockquote>
+<p>【多路复用技术】</p>
+<p>– 链路、网络资源（如带宽）划分为<strong>资源片</strong>，将资源片分配给各路呼叫（calls），每路呼叫<code>独占</code>分配到的资源篇进行通信，资源片可能<code>闲置</code>（无共享状态）</p>
+<p>– 典型方法：频分多路复用（FDM）、时分多路复用（TDM）、波分多路复用（BDM）、码分多路复用（CDM）</p>
+<h2 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h2><p>【交换方式】：存储-转发</p>
+<p>【报文】：源（应用）发送信息整体。比如：一个文件</p>
+<p>【传输延迟】：</p>
+<p>– 分组传输延迟（时延）公式：<code>M/R</code>（报文长度<code>M</code>，在传输速率为<code>R</code>的链路上传输分组）</p>
+<p>– 每次传输需要<code>M/R</code>秒</p>
+<h2 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h2><p>广泛使用</p>
+<p>【交换方式】：存储-转发</p>
+<p>【分组】：报文分拆出来的一系列相对较小的数据包</p>
+<p>– 分组 = 头 + 数据</p>
+<p>– 分组交换需要报文的<code>拆分</code>与<code>重组</code></p>
+<p>– 会产生<code>额外开销</code></p>
+<p>【多路复用】：分组交换——统计多路复用</p>
+<p>【传输延迟】：</p>
+<p>– 分组传输延迟（时延）<strong>公式</strong>：<code>L/R</code>（拆分为较小长度<code>L</code>，在传输速率为<code>R</code>的链路上传输分组）</p>
+<p>– 每个分组传输需要<code>L/R</code>秒</p>
+<p>链路数 ≈ 跳步数(h) = 传输链路上的路由器数(n) + 1</p>
+<p>【交付时间】：<strong>公式</strong>：T = M / R+(h-1) L/R =  M / R+n*L/R （传输时间 + 转发时间）</p>
+<blockquote>
+<p>【与<strong>报文</strong>交换的区别】：</p>
+<p><strong>报文</strong>交换使用完整的报文进行”存储-转发“；</p>
+<p><strong>分组</strong>交换使用较小的分组进行”存储-转发“。</p>
+<p>Q：哪种交换更好呢 ？</p>
+<p>A：从时间效率角度、缓存角度</p>
+<p>【传输时延】：报文交换串行，分组交换可以并行交换，后者传输效率更高。</p>
+<p>【缓存】：分组后的数据长度小，对硬件的缓存容量要求低</p>
+</blockquote>
+<blockquote>
+<p>【与<strong>电路</strong>交换的区别】：</p>
+<p><strong>电路</strong>交换用户独占</p>
+<p><strong>分组</strong>交换允许更过用户使用网络——网络资源充分共享</p>
+<p>Q：分组交换绝对优于电路交换 ？</p>
+<p>A：分组更适用于<strong>突发</strong>数据传输网络（Internet），不需要预约、占用，可能会产生拥塞，需要协议处理可靠数据传输和拥塞控制</p>
+</blockquote>
+<h1 id="计算机网络性能"><a href="#计算机网络性能" class="headerlink" title="计算机网络性能"></a><center>计算机网络性能</h1><h2 id="速率"><a href="#速率" class="headerlink" title="速率"></a><strong>速率</strong></h2><p>即 <strong>数据率</strong> 或称为 <strong>数据传输速率</strong> 或 <strong>比特率</strong></p>
+<p>– 单位时间（秒）传输信息（比特）量</p>
+<p>– 单位 ：b/s(或<code>bps</code>)、kb/s、Gb/s</p>
+<p>– <code>k=10^3</code>、<code>M=10^6</code>、<code>G=10^9</code></p>
+<h2 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a><strong>带宽</strong></h2><p>有两种含义，可以通过 <strong>单位</strong>、<strong>上下文</strong> </p>
+<p>– 通信：原指信号具有的频率宽度，即最高频率与最低频率之差，单位：<code>HZ</code></p>
+<p>– 网络中：数字信道所能传输的 <strong>最高数据率</strong>，单位：<code>b/s（bps）</code></p>
+<h2 id="延迟-时延"><a href="#延迟-时延" class="headerlink" title="延迟/时延"></a><strong>延迟/时延</strong></h2><p>Q：分组交换为什么会发生丢包和时延 ？</p>
+<p>A：分组在路由器缓存中排队，如果缓存满了，刚到达的分组被 <strong>丢弃</strong></p>
+<p>【<strong>四种 分组延迟</strong>】</p>
+<p>– 结点处理延迟：差错检验……</p>
+<p>– 排队延迟：等待输出链路可用，取决于路由器拥塞状态，不确定</p>
+<p>– 传输延迟：分组长度<code>L</code>（bits），链路带宽<code>R</code>（bps），<code>L/R</code></p>
+<p>– 传播延迟：链路长度<code>d</code>、信号传播速度<code>s</code>（光速、无线电波），即公式： d/s</p>
+<p><img src="https://img-blog.csdn.net/20180102141124840" alt=""></p>
+<h2 id="时延带宽积"><a href="#时延带宽积" class="headerlink" title="时延带宽积"></a>时延带宽积</h2><p>【公式】：时延带宽积 = 传播时延 * 带宽</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.bubuko.com%2Finfo%2F201901%2F20190113010550758902.png&refer=http%3A%2F%2Fimage.bubuko.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663659488&t=9ce8d8f2b74293e3b087dfc5f878a383" alt=""></p>
+<p>链路的时延带宽积又称为：<code>以比特为单位的链路长度</code></p>
+<h2 id="分组丢失（丢包）"><a href="#分组丢失（丢包）" class="headerlink" title="分组丢失（丢包）"></a>分组丢失（丢包）</h2><p>丢包是因为队列缓存容量有限</p>
+<p>网络处理方式不一样，<code>Internet</code>丢失直接不要</p>
+<p>丢包率 = 丢包数 / 已发分组总数</p>
+<h2 id="吞吐量-率"><a href="#吞吐量-率" class="headerlink" title="吞吐量/率"></a>吞吐量/率</h2><p>表示在<strong>发送</strong>端与<strong>接收</strong>端之间传送数据速率（b/s）</p>
+<p><strong>即时吞吐量</strong>：给定时刻的速率</p>
+<p><strong>平均吞吐量</strong>：一段时间的平均速率</p>
+<p>吞吐量取决于<code>瓶颈链路</code>，即端到端路劲上，限制端到端吞吐量的链路</p>
+<h1 id="计算机网络的体系结构"><a href="#计算机网络的体系结构" class="headerlink" title="计算机网络的体系结构"></a>计算机网络的体系结构</h1><p>组成部分：主机、路由器、各种链路、应用、协议、硬件，软件……</p>
+<p>【网络体系结构】：从<strong>功能上</strong>描述计算机网络结构</p>
+<p>【计算机网络体系结构】：计算机网络的各层及其协议的集合</p>
+<p>【模块化分层】：有利于系统更新、维护。有利于标准化</p>
+<h2 id="分层网络体系结构"><a href="#分层网络体系结构" class="headerlink" title="分层网络体系结构"></a>分层网络体系结构</h2><p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.likecs.com%2Fdefault%2Findex%2Fimg%3Fu%3DaHR0cHM6Ly9waWFuc2hlbi5jb20vaW1hZ2VzLzQ4OC84NmI1ODZmNzcyMjUzZmM3YTA3NzVkZmEzZDliZjZmMC5wbmc%3D&refer=http%3A%2F%2Fwww.likecs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663662434&t=68d9c87096c06843aaf69e3134bcd8f7" alt=""></p>
+<p>【实体】：表示任何可发送或接收信息的硬件或软件进程</p>
+<p>任一层实体需要使用<code>下层</code>服务，遵循<code>本层</code>协议，实现本层功能，向<code>上层</code>提供服务，服务是”<code>垂直的</code>“</p>
+<p>【协议】：控制<code>两个对等实体</code>进行通信的规则集合，协议是”<code>水平的</code>“</p>
+<h1 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a><center>OSI 参考模型</h1><h2 id="OSI-参考模型解释与通信过程"><a href="#OSI-参考模型解释与通信过程" class="headerlink" title="OSI 参考模型解释与通信过程"></a>OSI 参考模型解释与通信过程</h2><p>【目的】支持<code>异构网络系统</code>的互联互通</p>
+<p>– 异构网络系统互连的<code>国际标准</code></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.pianshen.com%2Fimages%2F658%2Fc4aada8382de26e90247702902faf8c2.png&refer=http%3A%2F%2Fwww.pianshen.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663663065&t=b56eb6d3566e65c1b57ba28794eb7644" alt=""></p>
+<p>注意：虚线、实线</p>
+<p>相邻层之间通过<code>接口</code>传输数据，下面三层是<code>非端到端层</code></p>
+<h2 id="OSI-参考模型数据封装与通信过程"><a href="#OSI-参考模型数据封装与通信过程" class="headerlink" title="OSI 参考模型数据封装与通信过程"></a>OSI 参考模型<strong>数据封装</strong>与通信过程</h2><p>一层层封装、一层层解封</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.zyiz.net%2Fupload%2F202006%2F14%2F202006141726062159.png&refer=http%3A%2F%2Fwww.zyiz.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663663616&t=c8e5518aa7609b6378d668760fd9265a" alt=""></p>
+<p>Q：为什么需要数据封装 ？</p>
+<p>A：增加<code>控制信息</code></p>
+<p>【<strong>控制信息</strong>】：地址、差错检测编码、协议控制</p>
+<p>物理层</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Pu Hui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2022/08/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/">http://yoursite.com/2022/08/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">PH</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202011%2F16%2F20201116204246_0ca7a.jpeg&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1662787437&amp;t=aa97045e784995f2d9918232efb2d614" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/08/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/"><img class="prev_cover" src="/img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络（第二章内容）</div></div></a></div><div class="next-post pull_right"><a href="/2022/08/13/Array%20%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95/"><img class="next_cover" src="/img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">array 原生方法</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2022/08/20/计算机网络（第二章）/" title="计算机网络（第二章内容）"><img class="relatedPosts_cover" src="/img/default.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-08-20</div><div class="relatedPosts_title">计算机网络（第二章内容）</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Pu Hui</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode far fa-moon" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/js/my-js/diy.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>
