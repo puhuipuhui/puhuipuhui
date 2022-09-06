@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=0.8"><title>认识 node | PH</title><meta name="description" content="Node.js光速入门node.js 概述内容部分存在将node.js简写为node 1、node 是什么 ?  node不是一门语言，而是JavaScript的运行环境，和浏览器一样可以执行JavaScript代码。  2、为什么浏览器和Node可以执行JavaScript？  都是因为了内置JavaScript V8引擎，通过将JavaScript编译成为计算机能识别的机器码  3、浏览器和N"><meta name="keywords" content="node"><meta name="author" content="Pu Hui"><meta name="copyright" content="Pu Hui"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="认识 node"><meta name="twitter:description" content="Node.js光速入门node.js 概述内容部分存在将node.js简写为node 1、node 是什么 ?  node不是一门语言，而是JavaScript的运行环境，和浏览器一样可以执行JavaScript代码。  2、为什么浏览器和Node可以执行JavaScript？  都是因为了内置JavaScript V8引擎，通过将JavaScript编译成为计算机能识别的机器码  3、浏览器和N"><meta name="twitter:image" content="http://yoursite.com/img/default.png"><meta property="og:type" content="article"><meta property="og:title" content="认识 node"><meta property="og:url" content="http://yoursite.com/2022/09/05/%E5%88%9D%E8%AF%86node/"><meta property="og:site_name" content="PH"><meta property="og:description" content="Node.js光速入门node.js 概述内容部分存在将node.js简写为node 1、node 是什么 ?  node不是一门语言，而是JavaScript的运行环境，和浏览器一样可以执行JavaScript代码。  2、为什么浏览器和Node可以执行JavaScript？  都是因为了内置JavaScript V8引擎，通过将JavaScript编译成为计算机能识别的机器码  3、浏览器和N"><meta property="og:image" content="http://yoursite.com/img/default.png"><meta property="article:published_time" content="2022-09-05T06:57:41.816Z"><meta property="article:modified_time" content="2022-09-06T01:16:39.234Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2022/09/05/%E5%88%9D%E8%AF%86node/"><link rel="next" title="git 版本管理" href="http://yoursite.com/2022/09/03/git%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: Pu Hui","link":"链接: ","source":"来源: PH","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: false,
+  highlightShrink: 'none',
+  isFontAwesomeV5: true,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/small.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">36</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">22</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">17</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js"><span class="toc-number">1.</span> <span class="toc-text">Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#光速入门"><span class="toc-number">1.1.</span> <span class="toc-text">光速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#node-js-概述"><span class="toc-number">1.1.1.</span> <span class="toc-text">node.js 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">Node 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决安装问题"><span class="toc-number">1.1.3.</span> <span class="toc-text">解决安装问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局对象"><span class="toc-number">1.1.4.</span> <span class="toc-text">全局对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块系统"><span class="toc-number">1.2.</span> <span class="toc-text">模块系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模块概述"><span class="toc-number">1.2.1.</span> <span class="toc-text">模块概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块成员导出"><span class="toc-number">1.2.2.</span> <span class="toc-text">模块成员导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块成员导入"><span class="toc-number">1.2.3.</span> <span class="toc-text">模块成员导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块包装函数"><span class="toc-number">1.2.4.</span> <span class="toc-text">模块包装函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-内置模块"><span class="toc-number">1.2.5.</span> <span class="toc-text">Node.js 内置模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#path-模块"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">path 模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-system-模块"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">File system 模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NPM"><span class="toc-number">1.3.</span> <span class="toc-text">NPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-软件包"><span class="toc-number">1.3.1.</span> <span class="toc-text">Node.js 软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-NPM"><span class="toc-number">1.3.2.</span> <span class="toc-text">什么是 NPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#package-json"><span class="toc-number">1.3.3.</span> <span class="toc-text">package.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载node软件包"><span class="toc-number">1.3.4.</span> <span class="toc-text">下载node软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Node-js-软件包"><span class="toc-number">1.3.5.</span> <span class="toc-text">使用 Node.js 软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件包依赖问题说明"><span class="toc-number">1.3.6.</span> <span class="toc-text">软件包依赖问题说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目依赖-VS-开发依赖"><span class="toc-number">1.3.7.</span> <span class="toc-text">项目依赖 VS 开发依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地安装-VS-全局安装"><span class="toc-number">1.3.8.</span> <span class="toc-text">本地安装 VS 全局安装</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/default.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">PH</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><span> 友谊链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">认识 node</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2022-09-05 14:57:41"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2022-09-05</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2022-09-06 09:16:39"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2022-09-06</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/node/">node</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a><center>Node.js</h1><h2 id="光速入门"><a href="#光速入门" class="headerlink" title="光速入门"></a>光速入门</h2><h3 id="node-js-概述"><a href="#node-js-概述" class="headerlink" title="node.js 概述"></a>node.js 概述</h3><p>内容部分存在将<code>node.js</code>简写为<code>node</code></p>
+<p>1、node 是什么 ?</p>
+<blockquote>
+<p><code>node</code>不是一门语言，而是<code>JavaScript</code>的运行环境，和浏览器一样可以执行<code>JavaScript</code>代码。</p>
+</blockquote>
+<p>2、为什么<strong>浏览器</strong>和<code>Node</code>可以执行<code>JavaScript</code>？</p>
+<blockquote>
+<p>都是因为了内置<code>JavaScript V8</code>引擎，通过将<code>JavaScript</code>编译成为计算机能识别的机器码</p>
+</blockquote>
+<p>3、浏览器和<code>Node</code>执行<code>JavaScript</code>代码时存在区别嘛？</p>
+<blockquote>
+<p>有！在内置<code>JavaScript V8</code>引擎，只能执行一些基本操作，比如声明变量、函数，执行流程控制语句，像<code>if</code>判断和<code>for</code>循环语句等。</p>
+<ul>
+<li><p><strong>浏览器</strong>为了让<code>JavaScript</code>去操作窗口以及运行在浏览器中的<code>html</code>文档，浏览器会向<code>JavaScript v8 engine</code>添加一些<code>API</code>（就是<code>DOM</code> 和<code>BOM</code>）控制它们，所以<code>JavaScript</code>在浏览器窗口运行时，可以控制<strong>浏览器窗口对象</strong>和<strong>DOM 文档对象</strong>。</p>
+</li>
+<li><p><code>node</code>是没有<strong>DOM 对象</strong>和<strong>BOM 对象</strong>的。所以node不能执行与他们相关的代码，比如：<code>window.alert()</code>或者<code>document.getElementById().</code>都是浏览器特有的，而<strong>node</strong>中，作者向<code>Node</code>中添加了很多系统级别的<code>API</code></p>
+</li>
+</ul>
+</blockquote>
+<p><code>JavaScript</code>运行在浏览器中控制的是<strong>浏览器窗口</strong>和<strong>DOM</strong>文档。（ ECMAscript + DOM + BOM ）<br><code>JavaScript</code>运行在<code>Node.js</code>中控制的操作系统级别的内容。（ ECMAscript + Node API ）</p>
+<p>4、为什么浏览器中的<code>JavaScript</code> 不能控制系统级别的<code>API</code> ?</p>
+<blockquote>
+<p>浏览器是运行在用户的操作系统中的，如果能控制系统级别的<code>API</code>就会存在安全问题。<br><code>Node.js</code>是运行在远程的服务器中的，访问的是服务器系统<code>API</code>，不存在这方面的安全问题。</p>
+</blockquote>
+<p>5、Node.js 能够做什么 ?</p>
+<blockquote>
+<p>我们通常使用它来：构建服务器端应用、创建前端工程化工具。<br><code>JavaScript</code>运行在浏览器中——客户端<code>JavaScript</code>。<br><code>JavaScript</code>运行在<code>Node.js</code>中——服务器端<code>JavaScript</code>。</p>
+</blockquote>
+<h3 id="Node-安装"><a href="#Node-安装" class="headerlink" title="Node 安装"></a>Node 安装</h3><blockquote>
+<p>查看 Node 版本： node -v<br>查看 Npm 版本：npm -v</p>
+</blockquote>
+<h3 id="解决安装问题"><a href="#解决安装问题" class="headerlink" title="解决安装问题"></a>解决安装问题</h3><blockquote>
+<p>配置环境变量<code>path</code>（path 是给系统指路的）；</p>
+<p>配置后，即可全局使用<code>node</code>命令。</p>
+</blockquote>
+<h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>) <span class="comment">// window is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>Node.js</code>环境中是没有<code>window</code>的，所以<code>window</code>对象自然是未定义的。<br>在<code>Node.js</code>环境中全局对象为<code>global</code>，在<code>global</code>对象中会存在一些和 <code>window</code>对象中名字且功能相同的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global.console.log</span><br><span class="line">global.setInterval</span><br><span class="line">global.clearInterval</span><br><span class="line">global.setTimeout</span><br><span class="line">global.clear Timeout</span><br><span class="line">global.setlmmediate</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器声明的变量会挂载到<strong>全局对象</strong>上；在<code>Node.js</code>环境中声明的变量不会被添加到<strong>全局对象</strong>中，变量声明后只能在当前文件中使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"hello"</span></span><br><span class="line"><span class="built_in">console</span>.log(global.message) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h2><h3 id="模块概述"><a href="#模块概述" class="headerlink" title="模块概述"></a>模块概述</h3><p>在<code>Node.js</code>环境中，默认就支持模块系统，该模块系统遵循<code>CommonJS</code>规范。<br>一个<code>JavaScript</code>文件就是一个模块， 在模块文件中定义的<strong>变量</strong>和<strong>函数</strong>默认只能在模块文件内部使用，如果需要在其他文件中使用，必须显式声明将其进行<strong>导出</strong>。</p>
+<h3 id="模块成员导出"><a href="#模块成员导出" class="headerlink" title="模块成员导出"></a>模块成员导出</h3><p>在每一个模块文件中，都会存在一个<code>module</code>对象，即模块对象。</p>
+<p>在模块对象中保存了和当前模块相关信息。<br>在模块对象中有一个属性<code>exports</code>,它的值是一个对象，模块内部需要被导出的成员都应该存储在到这个对象中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Module &#123;</span><br><span class="line">	exports: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// some.js</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">"hello"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">message</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.endPoint = str</span><br><span class="line"><span class="built_in">module</span>.exports.log = log</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="模块成员导入"><a href="#模块成员导入" class="headerlink" title="模块成员导入"></a>模块成员导入</h3><p>在其他文件中通过<code>require</code>方法引入模块，<code>require</code> 方法的返回值就是对应模块的<code>module.exports</code>对象。<br>在导入模块时，模块文件后缀<code>.js</code> 可以省略，文件路径不可省略。</p>
+<p>1、<code>require</code>方法属于<strong>同步</strong>导入模块，模块导入后可以立即使用。</p>
+<p>2、通过<code>require</code>方法引入模块时，会<strong>立即执行</strong>该模块中的代码。</p>
+<p>3、在导入其他模块时，建议使用<code>const</code>关键字声明常量，防止模块被重置。</p>
+<p>导出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// some.js</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">"hello"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">message</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(message)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports.log = log</span><br></pre></td></tr></table></figure>
+
+<p>导入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">var</span> logger = <span class="built_in">require</span>(<span class="string">"./some"</span>)</span><br><span class="line">logger = <span class="number">1</span> </span><br><span class="line">logger.log() <span class="comment">// log not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>4、只导出一个成员方便其他模块使用时，可以采用以下导入方式。</p>
+<p>导出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//some.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>导入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">const</span> logger = <span class="built_in">require</span>(<span class="string">"./some"</span>)</span><br><span class="line">logger(<span class="string">"hello"</span>) <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模块包装函数"><a href="#模块包装函数" class="headerlink" title="模块包装函数"></a>模块包装函数</h3><p>Module Wapper Function</p>
+<p>1、<code>Node.js</code>是如何实现模块的，为什么在模块文件内部定义的变量在模块文件外部访问不到 ?<br>2、每一个模块文件中都会有<code>module</code>对象和<code>require</code>方法，它们是从哪来的 ?</p>
+<blockquote>
+<p>在模块文件执行之前，模块文件中的代码会被包裹在模块包装函数当中，这样每个模块文件中的代码就都拥有了自己的作用域，所以在模块外部就不能访问模块内部的成员了。</p>
+</blockquote>
+<p>模块包装函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports, require, module,__filename,__dirname</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// code</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<p>exports：导出对象，它使用的是<code>module.export</code>的引用地址（同：module.exports）</p>
+<p>require：导入对象 </p>
+<p>__filename：当前文件的路径</p>
+<p>__dirname：当前文件所在的根目录</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(__filename)</span><br><span class="line"><span class="comment">// /Users/ administrators/Desktop/Node/ code/logger.js</span></span><br><span class="line"><span class="built_in">console</span>.log(__dirname)</span><br><span class="line"><span class="comment">// /Users/ administ rators/Desktop/Node/ code</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>其实，在导入模块时最终导入的是<code>module.exports</code>对象，所以在使用<code>exports</code>对象<strong>添加导出成员</strong>时不能修改引用地址。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exports = log <span class="comment">//这是错误的写法.</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码会导致，<code>module.exports</code> 导出的内容为空</p>
+<h3 id="Node-js-内置模块"><a href="#Node-js-内置模块" class="headerlink" title="Node.js 内置模块"></a>Node.js 内置模块</h3><p>在<code>Node.js</code>安装完成后，我们可以使用自己开发的模块，也可以使用<code>node</code>的内置模块。</p>
+<p><code>在引入内置模块时，直接使用模块的名字，前面不需要加任何路径。</code></p>
+<h4 id="path-模块"><a href="#path-模块" class="headerlink" title="path 模块"></a>path 模块</h4><p><code>Path</code>：模块内提供了一些和路径操作相关的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(path.parse( filename))</span><br><span class="line"><span class="comment">/*&#123;</span></span><br><span class="line"><span class="comment">    root: ', </span></span><br><span class="line"><span class="comment">    dir: /Users/administrators/Desktop/node_ test',</span></span><br><span class="line"><span class="comment">    base: 'app.js';</span></span><br><span class="line"><span class="comment">    ext: 'js',</span></span><br><span class="line"><span class="comment">    name: 'app'</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="File-system-模块"><a href="#File-system-模块" class="headerlink" title="File system 模块"></a>File system 模块</h4><p><code>File system</code>：文件操作系统，提供了和操作文件相关的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取当前文件处于的根目录</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="comment">// 同步方法 </span></span><br><span class="line"><span class="keyword">const</span> files = fs.readdirSync(<span class="string">"./"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(files) <span class="comment">// [ 'app.js', 'logger.js' ]</span></span><br><span class="line"><span class="comment">// 异步方法 </span></span><br><span class="line">fs.readdir(<span class="string">" ./"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, files</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error) <span class="comment">// null I Error t</span></span><br><span class="line">    <span class="built_in">console</span> log(files) <span class="comment">// [ 'appjs', 'logger.js' ]I undefined </span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><h3 id="Node-js-软件包"><a href="#Node-js-软件包" class="headerlink" title="Node.js 软件包"></a>Node.js 软件包</h3><p>每一个基于<code>Node.js</code>平台开发的应用程序都是<code>Node.js</code>软件包。</p>
+<p>所有<code>Node.js</code>软件包都被托管在<a href="http://www.npmjs.com" target="_blank" rel="noopener">www.npmjs.com</a> 中。而且可以自己开发包，上传供别人使用。</p>
+<h3 id="什么是-NPM"><a href="#什么是-NPM" class="headerlink" title="什么是 NPM"></a>什么是 NPM</h3><p><code>Node Package Manager</code>, <code>Node,js</code> 环境中的软件包管理器。随<code>Node.js</code>一起捆绑安装。</p>
+<p>它可以将<code>Node</code>软件包，添加到我们的应用程序中并对其进行管理，比如<strong>下载</strong>、<strong>删除</strong>、<strong>更新</strong>、<strong>查看版本</strong>等等。</p>
+<p>它<strong>没有用户界面</strong>，需要在命令行工具中通过命令的方式使用，对应的命令就是<code>npm</code>。</p>
+<p><code>NPM</code>和<code>Node</code>是两个独立的应用程序，只是被捆绑安装了，可以通过版本号证明。</p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><p><code>Node.js</code>规定在每一个软件包中 都必须包含一个叫做 <code>package.json</code>的文件。</p>
+<p>它是应用程序的描述文件，包含和应用程序相关的信息，比如应用名称，应用版本，应用作者等等。</p>
+<p>通过<code>package.json</code>文件可以方便管理应用和发布应用。</p>
+<p>创建<code>package.json</code>文件: <code>npm init</code></p>
+<p>快速创建<code>package.json</code>文件: <code>npm init --yes</code></p>
+<h3 id="下载node软件包"><a href="#下载node软件包" class="headerlink" title="下载node软件包"></a>下载<code>node</code>软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;包名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>软件包下载完成后会发生三件事:</p>
+<p>1、软件包会被存储在<code>node_modules</code>文件夹中，如果在应用中不存在此文件夹，<code>npm</code>会自动创建。</p>
+<p>2、软件包会被记录在<code>package.json</code> 文件中包含软件包的名字以及版本号。</p>
+<p>3、<code>npm</code>会在应用中创建<code>package-lock.json</code> 文件，用于记录软件包及软件包的依赖包的下载地址及版本。</p>
+<h3 id="使用-Node-js-软件包"><a href="#使用-Node-js-软件包" class="headerlink" title="使用 Node.js 软件包"></a>使用 Node.js 软件包</h3><p>在引入第三方软件包时，在<code>require</code>方法中不需要加入路径信息，只需要使用软件包的名字即可，require 方法会</p>
+<p>自动去<code>node_ modules</code>文件夹中进行查找。（不是内置模块才会去<code>node_ modules</code>中查找）</p>
+<h3 id="软件包依赖问题说明"><a href="#软件包依赖问题说明" class="headerlink" title="软件包依赖问题说明"></a>软件包依赖问题说明</h3><p>1、比如，我下载了<code>mongoose</code>软件包，但是在<code>node_ modules</code> 文件夹中突然多出了很多其他我没下载的软件包，为什么 ?</p>
+<blockquote>
+<p>实际上它们又是<code>mongoose</code>依赖的软件包。</p>
+</blockquote>
+<p>2、为什么mongoose依赖的软件包不放在mongoose文件夹中呢?</p>
+<blockquote>
+<p>在早期的<code>npm</code>版本中，某个软件包依赖的其他软件包都会被放置在该软件包<strong>内部</strong>的<code>node_ modules</code>文件夹中，但是这样做存在<br>两个问题：</p>
+<p>① 【重复下载】：很多软件包都会有相同的依赖，导致开发者在一个项目中会下载很多重复的软件包，比如<code>A</code>依赖<code>X</code>,<br><code>B</code>依赖<code>X</code>, <code>C</code>依赖<code>X</code>，这样<code>X</code>就会被<strong>重复下载</strong>三次。</p>
+<p>② 【不易删除】：文件夹嵌套层次太深，导致文件夹在<code>windows</code>系统中不能被直接删除。比如，<code>A</code>依赖<code>B</code>,<code>B</code>依赖<code>C</code>，<code>C</code>依赖<code>D</code>，会发生依次嵌套的情况。</p>
+</blockquote>
+<p>3、所有的软件包都放置在 node_modules 文件夹中不会导致软件包的版本冲突吗?</p>
+<blockquote>
+<p>会出现，但是已解决：<br>比如<code>A</code>依赖<code>X</code>的<code>1</code>版本，<code>B</code>依赖<code>X</code>的<code>2</code>版本，如果你先下载的是<code>A</code>，那么<code>A</code>依赖的<code>X</code>会被放置在根目录的<code>node__modules</code>文件夹中，当下载<code>B</code>时，由于在根目录中已经存在<code>X</code>，但是版本不一致，那么<code>B</code>依赖的<code>X</code>就会被放置在<code>B</code>软件包中的<code>node_module</code> 文件夹中，通过此方式解决软件包版本冲突的问题。</p>
+</blockquote>
+<p>4、node_ modules 文件夹中的软件包都需要提交到 git 仓库中吗?</p>
+<blockquote>
+<p>实际上，应用程序依赖了哪些软件包在<code>package.json</code>文件中都会有记录，其他人可以通过<code>npm install</code>命令重新下载它们。为了<br>保持下载版本一直, <code>npm</code>还会根据<code>package-lock.json</code> 文件中的记录的地址进行下载。<br>将应用程序提交到版本库之前，将<code>node_ modules</code> 写到<code>.gitignore</code> 文件中。</p>
+</blockquote>
+<h3 id="项目依赖-VS-开发依赖"><a href="#项目依赖-VS-开发依赖" class="headerlink" title="项目依赖 VS 开发依赖"></a>项目依赖 VS 开发依赖</h3><p>下载<strong>开发</strong>依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D</span><br></pre></td></tr></table></figure>
+
+<p>开发环境中下载依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>生产环境中下载依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --prod</span><br></pre></td></tr></table></figure>
+
+<h3 id="本地安装-VS-全局安装"><a href="#本地安装-VS-全局安装" class="headerlink" title="本地安装 VS 全局安装"></a>本地安装 VS 全局安装</h3><p><strong>本地</strong>安装：将软件包下载到应用根目录下的<code>node_modules</code> 文件夹中，软件包只能在当前应用中使用。</p>
+<p><strong>全局</strong>安装：将软件包下载到操作系统的指定目录中，可以在任何应用中使用。</p>
+<blockquote>
+<p>通过<code>-g</code> 选项将软件包安装到全局：npm install <pkg> -g<br>查看全局软件包安装位置：npm root -g<br>删除全局中的软件包： npm un <pkg> -g<br>查看全局中安装了哪些软件包：npm list -g –depth 0<br>查看全局中有哪些过期软件包： npm outdated -g</p>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Pu Hui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2022/09/05/%E5%88%9D%E8%AF%86node/">http://yoursite.com/2022/09/05/%E5%88%9D%E8%AF%86node/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">PH</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/node/">node</a></div><div class="post_share"><div class="social-share" data-image="/img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2022/09/03/git%20%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"><img class="next_cover" src="/img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">git 版本管理</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Pu Hui</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode far fa-moon" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/js/my-js/diy.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>
