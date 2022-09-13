@@ -5067,7 +5067,7 @@ figure.gallery-group .gallery-group-name:after {
 [data-theme='dark'] #loading-box .loading-left-bg,
 [data-theme='dark'] #loading-box .loading-right-bg,
 [data-theme='dark'] #loading-box .configure-core {
-  background-color: #0d0d0d;
+  background-color: #0c0c0c;
 }
 [data-theme='dark'] #loading-box .loading-word {
   color: rgba(255,255,255,0.6);
