@@ -317,6 +317,13 @@ canvas:not(#ribbon-canvas),
   -ms-animation: scroll-down-effect 1.5s infinite;
   animation: scroll-down-effect 1.5s infinite;
 }
+.avatar-img {
+  -webkit-animation: avatar_turn_around 2s linear infinite;
+  -moz-animation: avatar_turn_around 2s linear infinite;
+  -o-animation: avatar_turn_around 2s linear infinite;
+  -ms-animation: avatar_turn_around 2s linear infinite;
+  animation: avatar_turn_around 2s linear infinite;
+}
 .reward-main {
   -webkit-animation: donate_effcet 0.3s 0.1s ease both;
   -moz-animation: donate_effcet 0.3s 0.1s ease both;
@@ -2365,6 +2372,7 @@ blockquote footer cite:before {
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
+  background: rgba(245,219,217,0.2);
 }
 #page-header:not(.fixed) .menus {
   padding-right: 0 !important;
@@ -5226,14 +5234,15 @@ figure.gallery-group .gallery-group-name:after {
 }
 .search-dialog {
   position: fixed;
-  top: 5rem;
+  top: 8rem;
   left: 50%;
   z-index: 1001;
   display: none;
   margin-left: -15rem;
   padding: 1rem;
-  width: 30rem;
-  background: #f6f8fa;
+  width: 33rem;
+  background: rgba(245,233,248,0.871);
+  border-radius: 10px;
 }
 .search-dialog hr {
   margin: 1rem auto;
