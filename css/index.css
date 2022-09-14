@@ -2634,29 +2634,22 @@ blockquote footer cite:before {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-#loading-box .spinner-box .configure-border-1 {
-  position: absolute;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  width: 200px;
-  height: 100px;
-  background: url("/img/bear.png") no-repeat;
-/* 我们元素可以添加多个动画， 用逗号分隔 */
-  -webkit-animation: bear 0.35s steps(8) infinite;
-  -moz-animation: bear 0.35s steps(8) infinite;
-  -o-animation: bear 0.35s steps(8) infinite;
-  -ms-animation: bear 0.35s steps(8) infinite;
-  animation: bear 0.35s steps(8) infinite;
+#loading-box .spinner-box .configure-border-2 {
+  left: -115px;
+  padding: 3px;
+  width: 115px;
+  height: 115px;
+  background: rgba(245,233,248,0.871);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation: configure-xclockwise 4s ease-in-out 0s infinite alternate;
+  -moz-animation: configure-xclockwise 4s ease-in-out 0s infinite alternate;
+  -o-animation: configure-xclockwise 4s ease-in-out 0s infinite alternate;
+  -ms-animation: configure-xclockwise 4s ease-in-out 0s infinite alternate;
+  animation: configure-xclockwise 4s ease-in-out 0s infinite alternate;
 }
 #loading-box .spinner-box .loading-word {
   position: absolute;
